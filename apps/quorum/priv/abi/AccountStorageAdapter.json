@@ -1,0 +1,484 @@
+[
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "name": "contextstorage",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipRenounced",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "fieldName",
+        "type": "string"
+      }
+    ],
+    "name": "addAllowedFieldName",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "fieldName",
+        "type": "string"
+      }
+    ],
+    "name": "removeAllowedFieldName",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "fieldName",
+        "type": "string"
+      }
+    ],
+    "name": "isAllowedFieldName",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "data",
+        "type": "string"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "setFieldMainData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "getFieldDetails",
+    "outputs": [
+      {
+        "name": "data",
+        "type": "string"
+      },
+      {
+        "name": "verificationStatusName",
+        "type": "string"
+      },
+      {
+        "name": "verificationContractAddress",
+        "type": "address"
+      },
+      {
+        "name": "verifiedAt",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "getLastFieldVerificationContractAddress",
+    "outputs": [
+      {
+        "name": "verificationContract",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFieldVerificationContractAddress",
+    "outputs": [
+      {
+        "name": "verificationContract",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "getFieldLastMainData",
+    "outputs": [
+      {
+        "name": "data",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFieldMainData",
+    "outputs": [
+      {
+        "name": "data",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "getFieldLastVerificationData",
+    "outputs": [
+      {
+        "name": "verificationStatus",
+        "type": "uint8"
+      },
+      {
+        "name": "verificationContractAddress",
+        "type": "address"
+      },
+      {
+        "name": "verifiedAt",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getFieldVerificationData",
+    "outputs": [
+      {
+        "name": "verificationStatus",
+        "type": "uint8"
+      },
+      {
+        "name": "verificationContractAddress",
+        "type": "address"
+      },
+      {
+        "name": "verifiedAt",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getIsFieldVerificationContractExist",
+    "outputs": [
+      {
+        "name": "result",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "verificationContractAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setFieldLastVerificationContractAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "name": "verificationContractAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setFieldVerificationContractAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "accountFieldName",
+        "type": "string"
+      }
+    ],
+    "name": "getFieldHistoryLength",
+    "outputs": [
+      {
+        "name": "length",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "milestone",
+        "type": "uint256"
+      }
+    ],
+    "name": "setRewardedAt",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "accountAddress",
+        "type": "address"
+      },
+      {
+        "name": "milestone",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRewardedAt",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

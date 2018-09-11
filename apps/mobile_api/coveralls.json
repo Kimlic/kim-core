@@ -1,0 +1,22 @@
+{
+    "skip_files": [
+        "test/*",
+
+        "lib/application.ex",
+        "lib/mobile_api/endpoint.ex",
+        "lib/mobile_api/mobile_api_web.ex",
+        "lib/mobile_api/controllers/fallback_controller",
+        "lib/mobile_api/router.ex"
+    ],
+    "custom_stop_words": [
+        "field",
+        "has_one",
+        "has_many",
+        "embeds_one",
+        "embeds_many",
+        "schema",
+        "send",
+        "Log."
+    ],
+    "treat_no_relevant_lines_as_covered": true
+}

@@ -1,0 +1,21 @@
+{
+  "skip_files": [
+    "test/*",
+    "src/*",
+
+    "lib/abi/*",
+    "lib/application.ex",
+    "lib/quorum.ex",
+    "lib/log.ex",
+    "lib/quorum/loggers/*",
+    "lib/quorum/proxy/client.ex",
+    "lib/quorum/contract/contracts/*",
+    "lib/quorum/contract/context.ex",
+    "lib/quorum/contract/behaviour.ex",
+    "lib/quorum/proxy/client_behaviour.ex"
+  ],
+  "custom_stop_words": [
+    "Log."
+  ],
+  "treat_no_relevant_lines_as_covered": true
+}

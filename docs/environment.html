@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.4">
+    <title>Environment Variables – Kimlic v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-01e6fad8b1.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Kimlic
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Environment Variables</h1>
+<p>This environment variables can be used to configure released docker container at start time.
+Also sample <code class="inline">.env</code> can be used as payload for <code class="inline">docker run</code> cli.</p>
+<h1>Mobile API</h1>
+<p>Mobile API and Core application </p>
+<h3 id="endpoints" class="section-heading">
+  <a href="#endpoints" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Endpoints
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">HOST</td><td style="text-align: left"><code class="inline">80</code></td><td style="text-align: left">HTTP host for web app to listen on.</td>
+</tr>
+<tr>
+<td style="text-align: left">PORT</td><td style="text-align: left"><code class="inline">localhost</code></td><td style="text-align: left">HTTP port for web app to listen on.</td>
+</tr>
+<tr>
+<td style="text-align: left">SECRET_KEY</td><td style="text-align: left"><code class="inline">b9WHCgR5TGcr</code>..</td><td style="text-align: left">Phoenix [<code class="inline">:secret_key_base</code>].</td>
+</tr>
+<tr>
+<td style="text-align: left">DEBUG_INFO_ENABLED</td><td style="text-align: left"><code class="inline">false</code></td><td style="text-align: left">Send debug info in headers</td>
+</tr>
+</table>
+<h3 id="redis" class="section-heading">
+  <a href="#redis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Redis
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">REDIS_URI</td><td style="text-align: left">not set</td><td style="text-align: left">Redis URI.</td>
+</tr>
+</table>
+<h3 id="email" class="section-heading">
+  <a href="#email" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Email
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">EMAIL_CREATE_PROFILE_FROM_EMAIL</td><td style="text-align: left"><code class="inline">verification@kimlic.com</code></td><td style="text-align: left">Sender email on create profile.</td>
+</tr>
+<tr>
+<td style="text-align: left">EMAIL_CREATE_PROFILE_FROM_NAME</td><td style="text-align: left"><code class="inline">Kimlic</code></td><td style="text-align: left">Sender name on create profile.</td>
+</tr>
+<tr>
+<td style="text-align: left">EMAIL_CREATE_PROFILE_SUBJECT</td><td style="text-align: left"><code class="inline">Kimlic - New user email verification</code></td><td style="text-align: left">Sender subject on create profile.</td>
+</tr>
+<tr>
+<td style="text-align: left">AMAZON_SES_REGION_ENDPOINT</td><td style="text-align: left">not set</td><td style="text-align: left">Amazon SES Region endpoint. Ex: <code class="inline">eu-west-1</code></td>
+</tr>
+<tr>
+<td style="text-align: left">AMAZON_SES_ACCESS_KEY</td><td style="text-align: left">not set</td><td style="text-align: left">Amazon SES Access key.</td>
+</tr>
+<tr>
+<td style="text-align: left">AMAZON_SES_SECRET_KEY</td><td style="text-align: left">not set</td><td style="text-align: left">Amazon SES Access secret.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFICATION_EMAIL_TTL</td><td style="text-align: left"><code class="inline">86400</code></td><td style="text-align: left">Time to live for email verification in Redis (seconds).</td>
+</tr>
+</table>
+<h3 id="sms" class="section-heading">
+  <a href="#sms" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  SMS
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">MESSENGER_MESSAGE_FROM</td><td style="text-align: left"><code class="inline">Kimlic</code></td><td style="text-align: left">Sender name.</td>
+</tr>
+<tr>
+<td style="text-align: left">RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT</td><td style="text-align: left"><code class="inline">604800000</code> week in ms</td><td style="text-align: left">Timeout for phone verification (in ms).</td>
+</tr>
+<tr>
+<td style="text-align: left">RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS</td><td style="text-align: left"><code class="inline">5</code></td><td style="text-align: left">Max attempts for phone verification.</td>
+</tr>
+<tr>
+<td style="text-align: left">TWILIO_ACCOUNT_SID</td><td style="text-align: left">not set</td><td style="text-align: left">Twilio account secret id.</td>
+</tr>
+<tr>
+<td style="text-align: left">TWILIO_AUTH_TOKEN</td><td style="text-align: left">not set</td><td style="text-align: left">Twilio account auth token.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFICATION_PHONE_TTL</td><td style="text-align: left"><code class="inline">86400</code></td><td style="text-align: left">Time to live for phone verification (in seconds).</td>
+</tr>
+</table>
+<h3 id="push-notifications" class="section-heading">
+  <a href="#push-notifications" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Push notifications
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">PIGEON_APNS_CERT</td><td style="text-align: left">not set</td><td style="text-align: left">Path to IOS cert.</td>
+</tr>
+<tr>
+<td style="text-align: left">PIGEON_APNS_CERT_UNENCRYPTED</td><td style="text-align: left">not set</td><td style="text-align: left">Path to IOS unencrypted cert.</td>
+</tr>
+<tr>
+<td style="text-align: left">PIGEON_FCM_KEY</td><td style="text-align: left">not set</td><td style="text-align: left">Android push server key.</td>
+</tr>
+</table>
+<h3 id="quorum" class="section-heading">
+  <a href="#quorum" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Quorum
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">SYNC_VERIFICATIONS</td><td style="text-align: left">not set</td><td style="text-align: left">List of verifications to be synced</td>
+</tr>
+</table>
+<h3 id="dependent-applications-configurations" class="section-heading">
+  <a href="#dependent-applications-configurations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Dependent applications configurations
+</h3>
+
+<p><a href="#quorum">Quorum</a></p>
+<h1>Attestation API</h1>
+<h3 id="endpoints" class="section-heading">
+  <a href="#endpoints" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Endpoints
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">HOST</td><td style="text-align: left"><code class="inline">80</code></td><td style="text-align: left">HTTP host for web app to listen on.</td>
+</tr>
+<tr>
+<td style="text-align: left">PORT</td><td style="text-align: left"><code class="inline">localhost</code></td><td style="text-align: left">HTTP port for web app to listen on.</td>
+</tr>
+<tr>
+<td style="text-align: left">SECRET_KEY</td><td style="text-align: left"><code class="inline">b9WHCgR5TGcr</code>..</td><td style="text-align: left">Phoenix [<code class="inline">:secret_key_base</code>].</td>
+</tr>
+<tr>
+<td style="text-align: left">PUSH_URL</td><td style="text-align: left">not set</td><td style="text-align: left">URL for sending push notifications. (Mobile api endpoint)</td>
+</tr>
+</table>
+<h3 id="database" class="section-heading">
+  <a href="#database" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Database
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">DB_USER</td><td style="text-align: left">not set</td><td style="text-align: left">DB user.</td>
+</tr>
+<tr>
+<td style="text-align: left">DB_PASSWORD</td><td style="text-align: left">not set</td><td style="text-align: left">DB password.</td>
+</tr>
+<tr>
+<td style="text-align: left">DB_NAME</td><td style="text-align: left">not set</td><td style="text-align: left">DB name.</td>
+</tr>
+<tr>
+<td style="text-align: left">DB_HOST</td><td style="text-align: left">not set</td><td style="text-align: left">DB host.</td>
+</tr>
+<tr>
+<td style="text-align: left">DB_PORT</td><td style="text-align: left">not set</td><td style="text-align: left">DB port.</td>
+</tr>
+<tr>
+<td style="text-align: left">DB_POOL_SIZE</td><td style="text-align: left">not set</td><td style="text-align: left">DB pool size.</td>
+</tr>
+</table>
+<h3 id="veriffme" class="section-heading">
+  <a href="#veriffme" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Veriffme
+</h3>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">VERIFFME_API_URL</td><td style="text-align: left">not set</td><td style="text-align: left">Api url.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFFME_AUTH_CLIENT</td><td style="text-align: left">not set</td><td style="text-align: left">Auth client.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFFME_API_SECRET</td><td style="text-align: left">not set</td><td style="text-align: left">Auth secret.</td>
+</tr>
+</table>
+<h3 id="dependent-applications-configurations" class="section-heading">
+  <a href="#dependent-applications-configurations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Dependent applications configurations
+</h3>
+
+<p><a href="#quorum">Quorum</a></p>
+<h1>Quorum</h1>
+<p>Quorum client.
+Dependents for <a href="#Mobile%20API">Mobile API</a>, <a href="#Attestation%20API">Attestation API</a></p>
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">QUORUM_URI</td><td style="text-align: left">not set</td><td style="text-align: left">Quorum uri.</td>
+</tr>
+<tr>
+<td style="text-align: left">KIMLIC_AP_ADDRESS</td><td style="text-align: left">not set</td><td style="text-align: left">Kimlic attestation party address.</td>
+</tr>
+<tr>
+<td style="text-align: left">KIMLIC_AP_PASSWORD</td><td style="text-align: left">not set</td><td style="text-align: left">Kimlic attestation party password.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFF_AP_ADDRESS</td><td style="text-align: left">not set</td><td style="text-align: left">Veriff attestation party address.</td>
+</tr>
+<tr>
+<td style="text-align: left">VERIFF_AP_PASSWORD</td><td style="text-align: left">not set</td><td style="text-align: left">Veriff attestation party password.</td>
+</tr>
+<tr>
+<td style="text-align: left">CONTEXT_STORAGE_ADDRESS</td><td style="text-align: left">not set</td><td style="text-align: left">Context storage address.</td>
+</tr>
+<tr>
+<td style="text-align: left">PROFILE_SYNC_USER_ADDRESS</td><td style="text-align: left">not set</td><td style="text-align: left">Address to access <code class="inline">AccountStorageAdapter.getFieldDetails</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left">QUORUM_GAS</td><td style="text-align: left">not set</td><td style="text-align: left">Gas amount</td>
+</tr>
+<tr>
+<td style="text-align: left">QUORUM_ALLOWED_RPC_METHODS</td><td style="text-align: left">[<code class="inline">web3_clientVersion</code>, <code class="inline">eth_call</code>, <code class="inline">eth_sendTransaction</code>, <code class="inline">eth_sendRawTransaction</code>, <code class="inline">eth_getTransactionCount</code>]</td><td style="text-align: left">Quorum allowed rpc methods.</td>
+</tr>
+</table>
+<h2 id="rabbitmq" class="section-heading">
+  <a href="#rabbitmq" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  RabbitMQ
+</h2>
+
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">VAR_NAME</th><th style="text-align: left">Default Value</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left">RABBITMQ_HOST</td><td style="text-align: left">not set</td><td style="text-align: left">RabbitMQ host.</td>
+</tr>
+<tr>
+<td style="text-align: left">RABBITMQ_USERNAME</td><td style="text-align: left">not set</td><td style="text-align: left">RabbitMQ username.</td>
+</tr>
+<tr>
+<td style="text-align: left">RABBITMQ_PASSWORD</td><td style="text-align: left">not set</td><td style="text-align: left">RabbitMQ password.</td>
+</tr>
+</table>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.4),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

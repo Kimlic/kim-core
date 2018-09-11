@@ -1,0 +1,371 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.4">
+    <title>Quorum.ABI.TypeEncoder – Kimlic v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-01e6fad8b1.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Kimlic
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Kimlic v1.0.0</small>
+        Quorum.ABI.TypeEncoder
+        
+          <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/abi/type_encoder.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p><code class="inline">ABI.TypeEncoder</code> is responsible for encoding types to the format
+expected by Solidity. We generally take a function selector and an
+array of data and encode that array according to the specification.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode/2">encode(data, function_selector)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Encodes the given data based on the function selector</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_bytes/1">encode_bytes(bytes)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_raw/2">encode_raw(data, types)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Simiar to <code class="inline">ABI.TypeEncoder.encode/2</code> except we accept
+an array of types instead of a function selector. We also
+do not pre-pend the method id</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="encode/2">
+  
+  
+  <div class="detail-header">
+    <a href="#encode/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">encode(data, function_selector)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/abi/type_encoder.ex#L108" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>encode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="Quorum.ABI.FunctionSelector.html#t:t/0">Quorum.ABI.FunctionSelector.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+        
+          <pre>encode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="Quorum.ABI.FunctionSelector.html#t:t/0">Quorum.ABI.FunctionSelector.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Encodes the given data based on the function selector.</p>
+<h2 id="encode/2-examples" class="section-heading">
+  <a href="#encode/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; [69, true]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: &quot;baz&quot;,
+...&gt;        types: [
+...&gt;          {:uint, 32},
+...&gt;          :bool
+...&gt;        ],
+...&gt;        returns: :bool
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;cdcd77c000000000000000000000000000000000000000000000000000000000000000450000000000000000000000000000000000000000000000000000000000000001&quot;
+
+iex&gt; [&quot;hello world&quot;]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: nil,
+...&gt;        types: [
+...&gt;          :string,
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000000b68656c6c6f20776f726c64000000000000000000000000000000000000000000&quot;
+
+iex&gt; [{&quot;awesome&quot;, true}]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: nil,
+...&gt;        types: [
+...&gt;          {:tuple, [:string, :bool]}
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000007617765736f6d6500000000000000000000000000000000000000000000000000&quot;
+
+iex&gt; [{17, true, &lt;&lt;32, 64&gt;&gt;}]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: nil,
+...&gt;        types: [
+...&gt;          {:tuple, [{:uint, 32}, :bool, {:bytes, 2}]}
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000012040000000000000000000000000000000000000000000000000000000000000&quot;
+
+iex&gt; [[17, 1]]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: &quot;baz&quot;,
+...&gt;        types: [
+...&gt;          {:array, {:uint, 32}, 2}
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;3d0ec53300000000000000000000000000000000000000000000000000000000000000110000000000000000000000000000000000000000000000000000000000000001&quot;
+
+iex&gt; [[17, 1], true]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: nil,
+...&gt;        types: [
+...&gt;          {:array, {:uint, 32}, 2},
+...&gt;          :bool
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001&quot;
+
+iex&gt; [[17, 1]]
+...&gt; |&gt; ABI.TypeEncoder.encode(
+...&gt;      %FunctionSelector{
+...&gt;        function: nil,
+...&gt;        types: [
+...&gt;          {:array, {:uint, 32}}
+...&gt;        ]
+...&gt;      }
+...&gt;    )
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000110000000000000000000000000000000000000000000000000000000000000001&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="encode_bytes/1">
+  
+  
+  <div class="detail-header">
+    <a href="#encode_bytes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">encode_bytes(bytes)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/abi/type_encoder.ex#L242" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>encode_bytes(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="encode_raw/2">
+  
+  
+  <div class="detail-header">
+    <a href="#encode_raw/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">encode_raw(data, types)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/abi/type_encoder.ex#L127" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>encode_raw(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Simiar to <code class="inline">ABI.TypeEncoder.encode/2</code> except we accept
+an array of types instead of a function selector. We also
+do not pre-pend the method id.</p>
+<h2 id="encode_raw/2-examples" class="section-heading">
+  <a href="#encode_raw/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="iex elixir">iex&gt; [{&quot;awesome&quot;, true}]
+...&gt; |&gt; ABI.TypeEncoder.encode_raw([{:tuple, [:string, :bool]}])
+...&gt; |&gt; Base.encode16(case: :lower)
+&quot;000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000007617765736f6d6500000000000000000000000000000000000000000000000000&quot;</code></pre>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.4),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

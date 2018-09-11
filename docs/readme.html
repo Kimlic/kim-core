@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.4">
+    <title>Kimlic application – Kimlic v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-01e6fad8b1.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Kimlic
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Kimlic application</h1>
+<p><a href="https://travis-ci.com/Kimlic/kimlic-elixir"><img src="https://travis-ci.com/Kimlic/kimlic-elixir.svg?token=gBEogjXajqrbo6djzwm2&amp;branch=develop" alt="Build Status"/></a></p>
+<p>For Docker environment configuration read
+<a href="https://github.com/Kimlic/kimlic-elixir/blob/develop/docs/ENVIRONMENT.md">ENVIRONMENT.md</a></p>
+<h2 id="travis-ci" class="section-heading">
+  <a href="#travis-ci" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Travis CI
+</h2>
+
+<p>Kimlic-elixir repository integrated with <a href="https://travis-ci.com/Kimlic/kimlic-elixir/builds">Travis CI</a>.
+For automatic semantic versioning CI requires proper commit message for each commit in pull requests.</p>
+<p>Use next prefix in commit message:</p>
+<ul>
+<li><code class="inline">[patch]</code> - increment PATCH version (0.1.0 -&gt; 0.1.1)
+</li>
+<li><code class="inline">[minor]</code> - increment MINOR version (0.1.0 -&gt; 0.2.0)
+</li>
+<li><code class="inline">[major]</code> - increment MAJOR version (0.1.0 -&gt; 1.0.0)
+</li>
+</ul>
+<p>In case of invalid commit message Travis CI fails</p>
+<p>Every successful build in Travis CI for <code class="inline">develop</code> branch will create Docker container for <a href="https://hub.docker.com/r/kimlictr/mobile_api/tags/">mobile_api</a> and <a href="https://hub.docker.com/r/kimlictr/attestation_api/tags/">attestation_api</a> applications. </p>
+<p>Documentation for containers deployment located in <a href="https://github.com/Kimlic/kimlic.charts/tree/azure">Helm charts</a> </p>
+<h2 id="quorum" class="section-heading">
+  <a href="#quorum" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Quorum
+</h2>
+
+<p>Local configuration:</p>
+<ul>
+<li>Clone smart contracts <a href="https://github.com/Kimlic/quorum.smart-contracts/">repo</a>
+</li>
+<li><code class="inline">cd quorum.smart-contracts</code>
+</li>
+<li>run truffle migration <code class="inline">truffle migrate --compile --reset --network KIM1</code> 
+</li>
+<li>found address for deployed KimlicContextStorage contract
+</li>
+<li>set KimlicContextStorage address to quorum config: <code class="inline">:quorum, context_storage_address: &quot;%ADDRESS%&quot;</code>
+</li>
+<li>open file <code class="inline">quorum.smart-contracts/PartiesConfig.json</code>
+</li>
+<li>found Kimlic AP (<code class="inline">&quot;Kimlic&quot;:{&quot;address&quot;:&quot;0xfc1a3f6fd7876d37a677e02de695099d1de12c95&quot;,&quot;password&quot;:&quot;Kimlicp@ssw0rd&quot;}</code>) 
+</li>
+<li>set <code class="inline">:quorum, kimlic_ap_address: &quot;%Kimlic.address%&quot;</code>
+</li>
+<li>set <code class="inline">:quorum, kimlic_ap_password: &quot;%Kimlic.password%&quot;</code>
+</li>
+<li>profit
+</li>
+</ul>
+<h2 id="integration-tests" class="section-heading">
+  <a href="#integration-tests" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Integration tests
+</h2>
+
+<ul>
+<li>Create <code class="inline">test_integration.priv.exs</code> from <code class="inline">test_integration.example.exs</code> in <code class="inline">quorum/config</code>
+</li>
+<li>Set quorum credentials in <code class="inline">test_integration.priv.exs</code>
+</li>
+<li>Run <code class="inline">mix clean</code> in project root directory
+</li>
+<li>Run test <code class="inline">mix test --only integration</code>
+</li>
+</ul>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.4),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+

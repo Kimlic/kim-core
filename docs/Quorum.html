@@ -1,0 +1,481 @@
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.4">
+    <title>Quorum – Kimlic v1.0.0</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-01e6fad8b1.js"></script>
+    
+    
+    
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        Kimlic
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Kimlic v1.0.0</small>
+        Quorum
+        
+          <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>Quorum client.
+Creates transaction and check transaction status.
+Works in 2 RabbitMQ queues: transaction_create and transaction_status.</p>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:callback/0">callback()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:quorum_client_response_t/0">quorum_client_response_t()</a>
+  </div>
+  
+</div>
+
+  </div>
+
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_transaction/2">create_transaction(transaction_data, meta \\ %{})</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Create transaction in Quorum via TaskBunny.
+  Uses two jobs <code class="inline">TransactionCreate</code> and <code class="inline">TransactionStatus</code> that applied to two queues respectively:
+  <code class="inline">transaction</code> and <code class="inline">transaction_status</code></p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_verification_contract/3">create_verification_contract(type, account_address, callback)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#gas/0">gas()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_digital_verification_result_transaction/2">set_digital_verification_result_transaction(contract_address, status)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_verification_result_transaction/1">set_verification_result_transaction(contract_address)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#validate_account_field_exists_and_set/3">validate_account_field_exists_and_set(account_address, field, to)</a>
+  </div>
+  
+</div>
+
+  </div>
+
+
+          
+
+        </section>
+      
+
+      
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div class="detail" id="t:callback/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:callback/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">callback()</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L14" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>callback() :: nil | {module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="t:quorum_client_response_t/0">
+  
+  
+  <div class="detail-header">
+    <a href="#t:quorum_client_response_t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">quorum_client_response_t()</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L15" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>quorum_client_response_t() ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+
+          </div>
+        </section>
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="create_transaction/2">
+  
+  
+    <span id="create_transaction/1"></span>
+  
+  <div class="detail-header">
+    <a href="#create_transaction/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_transaction(transaction_data, meta \\ %{})</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L198" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>create_transaction(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: :ok</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Create transaction in Quorum via TaskBunny.
+  Uses two jobs <code class="inline">TransactionCreate</code> and <code class="inline">TransactionStatus</code> that applied to two queues respectively:
+  <code class="inline">transaction</code> and <code class="inline">transaction_status</code>.</p>
+<p>  <code class="inline">TransactionCreate</code>
+  Steps:</p>
+<pre><code class="elixir">1. creates transaction in Quorum using `eth_sendTransaction` call
+2. on success response from Quorum - create second job `TransactionStatus` with transaction hash</code></pre>
+<p>  <code class="inline">TransactionStatus</code>
+  Steps:</p>
+<pre><code class="elixir">1. Check transaction status in Quorum using `eth_get_transaction_receipt` call
+2. Try 5 times, until success responce. On failed response - mark job as failed
+3. If argument `provide_return_value` set as true: fetch `return_value` from Quorum using `debug_traceTransaction` call
+4. Call callback if it provided. Transaction status and return value will be added as last arguments.
+   Transaction status argument - @type :: map
+   Retrun value argument - @type :: {:ok, binary} | {:error, binary}</code></pre>
+<p>  ## Examples</p>
+<pre><code class="elixir">create_transaction(%{...}, {MyModule, :callback, [&quot;my_callback_param&quot;]})
+
+def MyModule do
+
+  def callback(&quot;my_callback_param&quot;, transaction_status, {:ok, return_value}), do: ...
+
+  def callback(&quot;my_callback_param&quot;, transaction_status, {:error, reason}), do: ...
+end</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="create_verification_contract/3">
+  
+  
+  <div class="detail-header">
+    <a href="#create_verification_contract/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_verification_contract(type, account_address, callback)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L27" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>create_verification_contract(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:callback/0">callback</a>()) ::
+  :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="gas/0">
+  
+  
+  <div class="detail-header">
+    <a href="#gas/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">gas()</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L218" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>gas() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="set_digital_verification_result_transaction/2">
+  
+  
+  <div class="detail-header">
+    <a href="#set_digital_verification_result_transaction/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">set_digital_verification_result_transaction(contract_address, status)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L157" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>set_digital_verification_result_transaction(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: :ok</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="set_verification_result_transaction/1">
+  
+  
+  <div class="detail-header">
+    <a href="#set_verification_result_transaction/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">set_verification_result_transaction(contract_address)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L147" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>set_verification_result_transaction(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: :ok</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="validate_account_field_exists_and_set/3">
+  
+  
+  <div class="detail-header">
+    <a href="#validate_account_field_exists_and_set/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">validate_account_field_exists_and_set(account_address, field, to)</span>
+    
+      <a href="https://github.com/Kimlic/kimlic-elixir/blob/master/apps/quorum/lib/quorum.ex#L49" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>validate_account_field_exists_and_set(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ::
+  :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+
+        </section>
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.4),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
+  
+  </body>
+</html>
+
