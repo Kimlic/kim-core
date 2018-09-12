@@ -13,7 +13,7 @@ config :quorum,
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: {:system, "RABBIT_URI"}]
+    default: [connect_options: System.get_env("RABBIT_URI")]
   ]
 
 config :ethereumex, url: {:system, "QUORUM_URI"}

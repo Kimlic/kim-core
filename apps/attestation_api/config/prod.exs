@@ -2,10 +2,10 @@ use Mix.Config
 
 config :attestation_api, AttestationApi.Endpoint,
   secret_key_base: {:system, "SECRET_KEY"},
-  http: [port: {:system, :integer, "PORT"}],
+  http: [port: System.get_env("PORT")],
   url: [
     host: {:system, "HOST"},
-    port: {:system, :integer, "PORT"}
+    port: System.get_env("PORT")
   ],
   load_from_system_env: true,
   debug_errors: false,
@@ -21,7 +21,7 @@ config :attestation_api, AttestationApi.Repo,
   timeout: 15_000,
   pool_timeout: 15_000,
   ownership_timeout: 15_000,
-  pool_size: {:system, :integer, "DB_POOL_SIZE"},
+  pool_size: System.get_env("DB_POOL_SIZE"),
   parameters: [application_name: "AttestationApi", statement_timeout: "5000"],
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 

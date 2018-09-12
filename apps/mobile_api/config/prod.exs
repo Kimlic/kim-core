@@ -2,10 +2,10 @@ use Mix.Config
 
 config :mobile_api, MobileApi.Endpoint,
   secret_key_base: {:system, "SECRET_KEY"},
-  http: [port: {:system, :integer, "PORT"}],
+  http: [port: System.get_env("PORT")],
   url: [
     host: {:system, "HOST"},
-    port: {:system, :integer, "PORT"}
+    port: System.get_env("PORT")
   ],
   load_from_system_env: true,
   debug_errors: false,
@@ -13,8 +13,8 @@ config :mobile_api, MobileApi.Endpoint,
   code_reloader: false
 
 config :mobile_api,
-  rate_limit_create_phone_verification_timeout: {:system, :integer, "RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT"},
-  rate_limit_create_phone_verification_attempts: {:system, :integer, "RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS"},
+  rate_limit_create_phone_verification_timeout: System.get_env("RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT"),
+  rate_limit_create_phone_verification_attempts: System.get_env("RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS"),
   debug_info_enabled: {:system, :boolean, "DEBUG_INFO_ENABLED"}
 
 config :hammer, 

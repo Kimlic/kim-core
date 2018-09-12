@@ -4,8 +4,8 @@ config :core, Redix, {:system, "REDIS_URI"}
 
 config :core,
   verifications_ttl: [
-    email: {:system, :integer, "VERIFICATION_EMAIL_TTL"},
-    phone: {:system, :integer, "VERIFICATION_PHONE_TTL"}
+    email: System.get_env("VERIFICATION_EMAIL_TTL"),
+    phone: System.get_env("VERIFICATION_PHONE_TTL")
   ]
 
 config :core, :emails,
@@ -25,7 +25,7 @@ config :core, Core.Clients.Mailer,
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: {:system, "RABBIT_URI"}]
+    default: [connect_options: System.get_env("RABBIT_URI")]
   ]
 
 config :core, sync_fields: {:system, :list, "SYNC_VERIFICATIONS"}
