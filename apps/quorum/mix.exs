@@ -34,7 +34,6 @@ defmodule Quorum.MixProject do
 
   defp deps do
     [
-      {:confex, "~> 3.3.1"},
       {:ethereumex, "~> 0.3.2"},
       {:httpoison, "~> 1.2", override: true},
       {:jason, "~> 1.0"},

@@ -2,7 +2,6 @@ defmodule AttestationApi.Application do
   @moduledoc false
 
   use Application
-  alias Confex.Resolver
 
   @spec start(Application.start_type(), list) :: Supervisor.on_start()
   def start(_type, _args) do
@@ -22,10 +21,5 @@ defmodule AttestationApi.Application do
   def config_change(changed, _new, removed) do
     AttestationApi.Endpoint.config_change(changed, removed)
     :ok
-  end
-
-  @spec init(term, term) :: {:ok, term} | {:error, term}
-  def init(_key, config) do
-    Resolver.resolve(config)
   end
 end

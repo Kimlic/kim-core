@@ -58,7 +58,7 @@ defmodule Core.Integration.SyncTest do
   defp add_verification(field, account_address) do
     return_key = UUID.uuid4()
     kimlic_ap_address = Context.get_kimlic_attestation_party_address()
-    kimlic_ap_password = Confex.fetch_env!(:quorum, :kimlic_ap_password)
+    kimlic_ap_password = Application.get_env(:quorum, :kimlic_ap_password)
     verification_contract_factory_address = Context.get_verification_contract_factory_address()
 
     transaction_data = %{

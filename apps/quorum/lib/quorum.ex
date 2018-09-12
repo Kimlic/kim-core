@@ -108,8 +108,8 @@ defmodule Quorum do
 
   @spec unlock_profile_sync_user :: {:ok, binary}
   defp unlock_profile_sync_user do
-    address = Confex.fetch_env!(:quorum, :profile_sync_user_address)
-    password = Confex.fetch_env!(:quorum, :profile_sync_user_password)
+    address = Application.get_env(:quorum, :profile_sync_user_address)
+    password = Application.get_env(:quorum, :profile_sync_user_password)
 
     {:ok, _} = @quorum_client.request("personal_unlockAccount", [address, password], [])
     {:ok, address}
@@ -119,7 +119,7 @@ defmodule Quorum do
   defp create_verification_transaction(account_address, verification_field, callback) when is_callback(callback) do
     return_key = UUID.uuid4()
     kimlic_ap_address = Context.get_kimlic_attestation_party_address()
-    kimlic_ap_password = Confex.fetch_env!(:quorum, :kimlic_ap_password)
+    kimlic_ap_password = Application.get_env(:quorum, :kimlic_ap_password)
     verification_contract_factory_address = Context.get_verification_contract_factory_address()
 
     meta = %{
@@ -146,7 +146,7 @@ defmodule Quorum do
   @spec set_verification_result_transaction(binary) :: :ok
   def set_verification_result_transaction(contract_address) do
     kimlic_ap_address = Context.get_kimlic_attestation_party_address()
-    kimlic_ap_password = Confex.fetch_env!(:quorum, :kimlic_ap_password)
+    kimlic_ap_password = Application.get_env(:quorum, :kimlic_ap_password)
 
     @quorum_client.request("personal_unlockAccount", [kimlic_ap_address, kimlic_ap_password], [])
 
@@ -155,8 +155,8 @@ defmodule Quorum do
 
   @spec set_digital_verification_result_transaction(binary, boolean) :: :ok
   def set_digital_verification_result_transaction(contract_address, status) when is_boolean(status) do
-    veriff_ap_address = Confex.fetch_env!(:quorum, :veriff_ap_address)
-    veriff_ap_password = Confex.fetch_env!(:quorum, :veriff_ap_password)
+    veriff_ap_address = Application.get_env(:quorum, :veriff_ap_address)
+    veriff_ap_password = Application.get_env(:quorum, :veriff_ap_password)
 
     @quorum_client.request("personal_unlockAccount", [veriff_ap_address, veriff_ap_password], [])
 
@@ -215,5 +215,5 @@ defmodule Quorum do
   defp prepare_callback(meta), do: meta
 
   @spec gas :: binary
-  def gas, do: Confex.fetch_env!(:quorum, :gas)
+  def gas, do: Application.get_env(:quorum, :gas)
 end

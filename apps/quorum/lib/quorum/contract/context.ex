@@ -10,7 +10,7 @@ defmodule Quorum.Contract.Context do
   """
   @spec get_kimlic_attestation_party_address :: binary
   def get_kimlic_attestation_party_address do
-    Confex.fetch_env!(:quorum, :kimlic_ap_address)
+    Application.get_env(:quorum, :kimlic_ap_address)
   end
 
   @doc """
@@ -18,7 +18,7 @@ defmodule Quorum.Contract.Context do
   """
   @spec get_context_address :: binary
   def get_context_address do
-    context_storage_address = Confex.fetch_env!(:quorum, :context_storage_address)
+    context_storage_address = Application.get_env(:quorum, :context_storage_address)
     {:ok, address} = KimlicContextStorage.get_context(%{to: context_storage_address})
 
     address64_to_40(address)

@@ -124,12 +124,12 @@ defmodule AttestationApi.Clients.Veriffme do
   def contexts, do: @contexts
 
   @spec base_url :: binary
-  defp base_url, do: Confex.fetch_env!(:attestation_api, Veriffme)[:api_url]
+  defp base_url, do: Application.get_env(:attestation_api, Veriffme, :api_url)
 
   @spec headers(map) :: list
   defp headers(request_data) do
-    auth_client = Confex.fetch_env!(:attestation_api, Veriffme)[:auth_client]
-    api_secret = Confex.fetch_env!(:attestation_api, Veriffme)[:api_secret]
+    auth_client = Application.get_env(:attestation_api, Veriffme, :auth_client)
+    api_secret = Application.get_env(:attestation_api, Veriffme, :api_secret)
 
     signature =
       :sha256

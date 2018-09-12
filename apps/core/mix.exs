@@ -36,7 +36,6 @@ defmodule Core.MixProject do
     [
       {:plug, github: "PharosProduction/plug", override: true},
       {:cowboy, "~> 2.4", [github: "Kimlic/cowboy", override: true, manager: :rebar3]},
-      {:confex, "~> 3.3.1"},
       {:redix, ">= 0.0.0"},
       {:ecto, "~> 2.1"},
       {:swoosh, "~> 0.19"},

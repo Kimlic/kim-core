@@ -26,8 +26,8 @@ defmodule MobileApi.Plugs.PhoneVerificationLimiter do
   end
 
   @spec timeout :: integer
-  defp timeout, do: Confex.fetch_env!(:mobile_api, :rate_limit_create_phone_verification_timeout)
+  defp timeout, do: Application.get_env(:mobile_api, :rate_limit_create_phone_verification_timeout)
 
   @spec attempts :: integer
-  defp attempts, do: Confex.fetch_env!(:mobile_api, :rate_limit_create_phone_verification_attempts)
+  defp attempts, do: Application.get_env(:mobile_api, :rate_limit_create_phone_verification_attempts)
 end

@@ -1,8 +1,6 @@
 defmodule MobileApi.Endpoint do
   use Phoenix.Endpoint, otp_app: :mobile_api
 
-  alias Confex.Resolver
-
   plug(Plug.RequestId)
   plug(Plug.LoggerJSON, level: Logger.level())
 
@@ -26,9 +24,7 @@ defmodule MobileApi.Endpoint do
   """
   @spec init(term, term) :: {:ok, term}
   def init(_key, config) do
-    config = Resolver.resolve!(config)
-
-    unless config[:secret_key_base] do
+    unless Application.get_env(:mobile_api, MobileApi.Endpoint, :secret_key_base) do
       raise "Set SECRET_KEY environment variable!"
     end
 

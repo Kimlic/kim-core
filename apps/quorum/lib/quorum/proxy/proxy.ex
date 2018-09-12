@@ -37,7 +37,7 @@ defmodule Quorum.Proxy do
 
   @spec validate_rpc_method(binary, integer) :: :ok | {:error, map}
   defp validate_rpc_method(method, id) do
-    case method in Confex.fetch_env!(:quorum, :allowed_rpc_methods) do
+    case method in Application.get_env(:quorum, :allowed_rpc_methods) do
       true ->
         :ok
 

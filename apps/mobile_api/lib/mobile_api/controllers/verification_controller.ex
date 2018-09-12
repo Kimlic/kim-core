@@ -68,7 +68,7 @@ defmodule MobileApi.VerificationController do
 
   @spec send_debug_info(Conn.t(), %Verification{}) :: Conn.t()
   defp send_debug_info(conn, %Verification{token: token}) do
-    case Confex.fetch_env!(:mobile_api, :debug_info_enabled) do
+    case Application.get_env(:mobile_api, :debug_info_enabled) do
       true -> put_resp_header(conn, "debug-verification-token", token)
       false -> conn
     end

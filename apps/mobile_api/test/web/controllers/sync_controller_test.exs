@@ -26,7 +26,7 @@ defmodule MobileApi.SyncControllerTest do
         {:ok, generate(:account_address)}
       end)
 
-      fields_count = Confex.fetch_env!(:core, :sync_fields) |> length()
+      fields_count = Application.get_env(:core, :sync_fields) |> length()
 
       expect(QuorumContractMock, :eth_call, fields_count, fn :account_storage_adapter, function, [{_, field}], _opts ->
         assert "getFieldHistoryLength" == function

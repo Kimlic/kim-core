@@ -124,8 +124,8 @@ defmodule AttestationApi.Integration.DigitalVerificationsTest do
   @spec create_document_contract(binary) :: binary
   defp create_document_contract(account_address) do
     return_key = UUID.generate()
-    veriff_ap_address = Confex.fetch_env!(:quorum, :veriff_ap_address)
-    relaying_party_address = Confex.fetch_env!(:quorum, :relying_party_address)
+    veriff_ap_address = Application.get_env(:quorum, :veriff_ap_address)
+    relaying_party_address = Application.get_env(:quorum, :relying_party_address)
     verification_contract_factory_address = Context.get_verification_contract_factory_address()
 
     {:ok, _} =

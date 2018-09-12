@@ -120,8 +120,8 @@ defmodule Core.Verifications do
   end
 
   @spec verification_ttl(atom) :: pos_integer
-  defp verification_ttl(:phone), do: Confex.fetch_env!(:core, :verifications_ttl)[:phone]
-  defp verification_ttl(:email), do: Confex.fetch_env!(:core, :verifications_ttl)[:email]
+  defp verification_ttl(:phone), do: Application.get_env(:core, :verifications_ttl, :phone)
+  defp verification_ttl(:email), do: Application.get_env(:core, :verifications_ttl, :email)
 
   ### Callbacks (do not remove)
 

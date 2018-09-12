@@ -21,7 +21,7 @@ defmodule Core.Sync do
     account_storage_adapter_address = Context.get_account_storage_adapter_address()
 
     :core
-    |> Confex.fetch_env!(:sync_fields)
+    |> Application.get_env(:core, :sync_fields)
     |> Enum.filter(
       &Kernel.==(
         Quorum.validate_account_field_exists_and_set(account_address, &1, account_storage_adapter_address),
@@ -51,8 +51,8 @@ defmodule Core.Sync do
 
   @spec unlock_profile_sync_user :: {:ok, binary} | {:error, binary}
   defp unlock_profile_sync_user do
-    profile_sync_user_address = Confex.fetch_env!(:quorum, :profile_sync_user_address)
-    profile_sync_user_password = Confex.fetch_env!(:quorum, :profile_sync_user_password)
+    profile_sync_user_address = Application.get_env(:quorum, :profile_sync_user_address)
+    profile_sync_user_password = Application.get_env(:quorum, :profile_sync_user_password)
 
     @quorum_client.request("personal_unlockAccount", [profile_sync_user_address, profile_sync_user_password], [])
   end
@@ -63,7 +63,7 @@ defmodule Core.Sync do
 
     field_details =
       AccountStorageAdapter.get_field_details(account_address, sync_field, %{
-        from: Confex.fetch_env!(:quorum, :profile_sync_user_address),
+        from: Application.get_env(:quorum, :profile_sync_user_address),
         to: account_storage_addapter_address
       })
 

@@ -29,5 +29,5 @@ defmodule Core.Clients.Messenger do
   end
 
   @spec message_from :: binary
-  defp message_from, do: Confex.fetch_env!(:core, :messenger_message_from)
+  defp message_from, do: Application.get_env(:core, :messenger_message_from)
 end

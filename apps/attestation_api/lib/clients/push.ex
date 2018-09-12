@@ -39,7 +39,7 @@ defmodule AttestationApi.Clients.Push do
   end
 
   @spec push_url :: binary
-  defp push_url, do: Confex.fetch_env!(:attestation_api, __MODULE__)[:push_url]
+  defp push_url, do: Application.get_env(:attestation_api, __MODULE__, :push_url)
 
   @spec headers(binary) :: list
   defp headers(node_id),

@@ -20,7 +20,7 @@ defmodule MobileApi.Plugs.PhoneVerificationLimiterTest do
     end
 
     test "limit achieved", %{conn: conn} do
-      attempts = Confex.fetch_env!(:mobile_api, :rate_limit_create_phone_verification_attempts)
+      attempts = Application.get_env(mobile_api, :rate_limit_create_phone_verification_attempts)
 
       for _ <- 1..attempts,
           do: assert(%Plug.Conn{status: nil} = PhoneVerificationLimiter.call(conn, []))

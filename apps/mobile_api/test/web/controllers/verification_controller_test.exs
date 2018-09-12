@@ -431,7 +431,7 @@ defmodule MobileApi.VerificationControllerTest do
     end
 
     test "with limited requests", %{conn: conn} do
-      attempts = Confex.fetch_env!(:mobile_api, :rate_limit_create_phone_verification_attempts)
+      attempts = Application.get_env(mobile_api, :rate_limit_create_phone_verification_attempts)
 
       expect(QuorumContractMock, :call_function, attempts, fn :verification_contract_factory, function, _args, _opts ->
         assert "createBaseVerificationContract" == function

@@ -23,7 +23,7 @@ config :core, Core.Clients.Mailer, adapter: Swoosh.Adapters.Local
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: "amqp://localhost?heartbeat=30"]
+    default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
   ]
 
 config :core,

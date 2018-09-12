@@ -15,7 +15,7 @@ defmodule Quorum.Integration.DirectQuorumTest do
   test "create Email verification contract" do
     account_address = init_quorum_user()
     kimlic_ap_address = Context.get_kimlic_attestation_party_address()
-    kimlic_ap_password = Confex.fetch_env!(:quorum, :kimlic_ap_password)
+    kimlic_ap_password = Application.get_env(quorum, :kimlic_ap_password)
     verification_contract_factory_address = Context.get_verification_contract_factory_address()
 
     assert {:ok, _} = @quorum_client.request("personal_unlockAccount", [account_address, "p@ssW0rd"], [])
@@ -84,7 +84,7 @@ defmodule Quorum.Integration.DirectQuorumTest do
   test "withdraw tokens" do
     account_address = init_quorum_user()
     kimlic_ap_address = Context.get_kimlic_attestation_party_address()
-    kimlic_ap_password = Confex.fetch_env!(:quorum, :kimlic_ap_password)
+    kimlic_ap_password = Application.get_env(quorum, :kimlic_ap_password)
     verification_contract_factory_address = Context.get_verification_contract_factory_address()
 
     assert {:ok, _} = @quorum_client.request("personal_unlockAccount", [account_address, "p@ssW0rd"], [])
@@ -130,8 +130,8 @@ defmodule Quorum.Integration.DirectQuorumTest do
 
     # check contract expiration time
     #
-    user_address = Confex.fetch_env!(:quorum, :profile_sync_user_address)
-    password = Confex.fetch_env!(:quorum, :profile_sync_user_password)
+    user_address = Application.get_env(quorum, :profile_sync_user_address)
+    password = Application.get_env(quorum, :profile_sync_user_password)
     assert {:ok, _} = @quorum_client.request("personal_unlockAccount", [user_address, password], [])
 
     # get tokensUnlockAt from contract

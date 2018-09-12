@@ -35,7 +35,6 @@ defmodule MobileApi.Mixfile do
   defp deps do
     [
       {:jason, "~> 1.0"},
-      {:confex, "~> 3.3.1"},
       {:phoenix, github: "PharosProduction/phoenix", override: true},
       {:plug, github: "PharosProduction/plug", override: true},
       {:eview, "~> 0.12"},

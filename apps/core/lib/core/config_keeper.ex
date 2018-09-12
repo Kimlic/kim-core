@@ -19,7 +19,7 @@ defmodule Core.ConfigKeeper do
   @spec attestation_parties :: list
   defp attestation_parties do
     [
-      %{"name" => "Veriff.me", "address" => Confex.fetch_env!(:quorum, :veriff_ap_address)}
+      %{"name" => "Veriff.me", "address" => Application.get_env(:quorum, :veriff_ap_address)}
     ]
   end
 end
