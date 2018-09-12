@@ -28,9 +28,9 @@ config :core, Core.Clients.Mailer,
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: System.get_env("RABBIT_URI")]
+    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.244.242:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
   ]
-
+  
 config :core, sync_fields: System.get_env("SYNC_VERIFICATIONS")
 
 config :pigeon, :apns,

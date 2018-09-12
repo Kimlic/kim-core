@@ -13,7 +13,7 @@ config :quorum,
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: System.get_env("RABBIT_URI")]
+    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.206.183:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
   ]
 
 config :ethereumex, url: System.get_env("QUORUM_URI")

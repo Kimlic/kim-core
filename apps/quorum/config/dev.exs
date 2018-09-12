@@ -20,9 +20,14 @@ config :quorum,
     "personal_unlockAccount"
   ]
 
+# config :task_bunny,
+#   hosts: [
+#     default: [connect_options: "amqp://localhost?heartbeat=30"]
+#   ]
+
 config :task_bunny,
   hosts: [
-    default: [connect_options: "amqp://localhost?heartbeat=30"]
+    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.206.183:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
   ]
 
 config :ethereumex, url: "http://127.0.0.1:22000"
