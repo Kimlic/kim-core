@@ -1,6 +1,7 @@
 use Mix.Config
 
-config :core, Redix, System.get_env("REDIS_URI")
+config :core, Redix, 
+  uri: System.get_env("REDIS_URI")
 
 config :core,
   verifications_ttl: [
