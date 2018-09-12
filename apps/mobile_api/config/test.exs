@@ -5,7 +5,17 @@ config :mobile_api, MobileApi.Endpoint,
   server: false
 
 config :hammer,
-  backend: {Hammer.Backend.Redis, [expiry_ms: :timer.hours(24) * 7, redix_config: "redis://localhost:6379/1"]}
+  backend: {
+    Hammer.Backend.Redis, 
+    [
+      expiry_ms: :timer.hours(24) * 7, 
+      redix_config: [
+        host: "kimcore.redis.cache.windows.net", 
+        port: 6379, 
+        password: "seLjCUSJ72naqfwYQvBg1jbORvjtsRKVnAY6RrAUEmA="
+      ]
+    ]
+  }
 
 config :mobile_api, rate_limit_create_phone_verification_attempts: 5
 

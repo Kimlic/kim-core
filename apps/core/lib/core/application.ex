@@ -7,7 +7,11 @@ defmodule Core.Application do
   @spec start(Application.start_type(), list) :: Supervisor.on_start()
   def start(_type, _args) do
     children = [
-      worker(Redix, [Application.get_env(:core, Redix, :uri), [name: :redix]])
+      worker(Redix, [[
+        host: Application.get_env(:core, :redis_host), 
+        port: Application.get_env(:core, :redis_port), 
+        password: Application.get_env(:core, :redis_password)
+      ], [name: :redix]])
     ]
 
     opts = [strategy: :one_for_one, name: Core.Supervisor]

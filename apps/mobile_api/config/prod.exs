@@ -21,7 +21,11 @@ config :hammer,
   backend: {
     Hammer.Backend.Redis, [
       expiry_ms: :timer.hours(24) * 7, 
-      redix_config: System.get_env("REDIS_URI")
+      redix_config: [
+        host: System.get_env("REDIS_HOST"), 
+        port: System.get_env("REDIS_PORT"), 
+        password: System.get_env("REDIS_PASSWORD")
+      ]
     ]
   }
 

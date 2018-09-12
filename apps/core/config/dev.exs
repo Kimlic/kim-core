@@ -1,8 +1,9 @@
 use Mix.Config
 
-config :core, Redix,
-  host: "127.0.0.1",
-  port: 6379
+config :core, 
+  redis_host: "127.0.0.1",
+  redis_port: 6379,
+  redis_password: nil
 
 config :core,
   verifications_ttl: [

@@ -1,7 +1,9 @@
 use Mix.Config
 
-config :core, Redix, 
-  uri: System.get_env("REDIS_URI")
+config :core, 
+  redis_host: System.get_env("REDIS_HOST"),
+  redis_port: System.get_env("REDIS_PORT"),
+  redis_password: System.get_env("REDIS_PASSWORD")
 
 config :core,
   verifications_ttl: [
