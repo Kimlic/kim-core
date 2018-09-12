@@ -32,14 +32,14 @@ config :core, sync_fields: {:system, :list, "SYNC_VERIFICATIONS"}
 
 config :pigeon, :apns,
   apns_default: %{
-    cert: {:system, "PIGEON_APNS_CERT"},
-    key: {:system, "PIGEON_APNS_CERT_UNENCRYPTED"},
+    cert: System.get_env("PIGEON_APNS_CERT"),
+    key: System.get_env("PIGEON_APNS_CERT_UNENCRYPTED"),
     mode: :prod
   }
 
 config :pigeon, :fcm,
   fcm_default: %{
-    key: {:system, "PIGEON_FCM_KEY"},
+    key: System.get_env("PIGEON_FCM_KEY"),
     mode: :prod
   }
 
