@@ -1,10 +1,10 @@
 use Mix.Config
 
 config :attestation_api, AttestationApi.Endpoint,
-  secret_key_base: {:system, "SECRET_KEY"},
+  secret_key_base: System.get_env("SECRET_KEY"),
   http: [port: System.get_env("PORT")],
   url: [
-    host: {:system, "HOST"},
+    host: System.get_env("HOST"),
     port: System.get_env("PORT")
   ],
   load_from_system_env: true,
@@ -26,11 +26,11 @@ config :attestation_api, AttestationApi.Repo,
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 
 config :attestation_api, AttestationApi.Clients.Veriffme,
-  api_url: {:system, "VERIFFME_API_URL"},
-  auth_client: {:system, "VERIFFME_AUTH_CLIENT"},
-  api_secret: {:system, "VERIFFME_API_SECRET"}
+  api_url: System.get_env("VERIFFME_API_URL"),
+  auth_client: System.get_env("VERIFFME_AUTH_CLIENT"),
+  api_secret: System.get_env("VERIFFME_API_SECRET")
 
-config :attestation_api, AttestationApi.Clients.Push, push_url: {:system, "PUSH_URL"}
+config :attestation_api, AttestationApi.Clients.Push, push_url: System.get_env("PUSH_URL")
 
 config :ecto_logger_json, truncate_params: true
 

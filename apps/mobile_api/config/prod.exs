@@ -1,10 +1,10 @@
 use Mix.Config
 
 config :mobile_api, MobileApi.Endpoint,
-  secret_key_base: {:system, "SECRET_KEY"},
+  secret_key_base: System.get_env("SECRET_KEY"),
   http: [port: System.get_env("PORT")],
   url: [
-    host: {:system, "HOST"},
+    host: System.get_env("HOST"),
     port: System.get_env("PORT")
   ],
   load_from_system_env: true,
@@ -15,13 +15,13 @@ config :mobile_api, MobileApi.Endpoint,
 config :mobile_api,
   rate_limit_create_phone_verification_timeout: System.get_env("RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT"),
   rate_limit_create_phone_verification_attempts: System.get_env("RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS"),
-  debug_info_enabled: {:system, :boolean, "DEBUG_INFO_ENABLED"}
+  debug_info_enabled: System.get_env("DEBUG_INFO_ENABLED")
 
 config :hammer, 
   backend: {
     Hammer.Backend.Redis, [
       expiry_ms: :timer.hours(24) * 7, 
-      redix_config: {:system, "REDIS_URI"}
+      redix_config: System.get_env("REDIS_URI")
     ]
   }
 
