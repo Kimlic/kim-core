@@ -23,7 +23,7 @@ config :hammer,
       expiry_ms: :timer.hours(24) * 7, 
       redix_config: [
         host: System.get_env("REDIS_HOST"), 
-        port: System.get_env("REDIS_PORT") |> Integer.parse!, 
+        port: System.get_env("REDIS_PORT") |> Integer.parse! |> Kernel.elem(0), 
         password: System.get_env("REDIS_PASSWORD")
       ]
     ]
