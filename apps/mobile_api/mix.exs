@@ -36,8 +36,8 @@ defmodule MobileApi.Mixfile do
     [
       {:jason, "~> 1.0"},
       {:confex, "~> 3.3.1"},
-      {:phoenix, github: "Kimlic/phoenix", override: true},
-      {:plug, github: "Kimlic/plug", override: true},
+      {:phoenix, github: "PharosProduction/phoenix", override: true},
+      {:plug, github: "PharosProduction/plug", override: true},
       {:eview, "~> 0.12"},
       {:plug_logger_json, "~> 0.5"},
       {:cowboy, "~> 2.4", [github: "Kimlic/cowboy", override: true, manager: :rebar3]},

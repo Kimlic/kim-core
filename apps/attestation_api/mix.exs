@@ -34,8 +34,8 @@ defmodule AttestationApi.Mixfile do
 
   defp deps do
     [
-      {:phoenix, github: "Kimlic/phoenix", override: true},
-      {:plug, github: "Kimlic/plug", override: true},
+      {:phoenix, github: "PharosProduction/phoenix", override: true},
+      {:plug, github: "PharosProduction/plug", override: true},
       {:cowboy, "~> 2.4", [github: "Kimlic/cowboy", override: true, manager: :rebar3]},
       {:phoenix_pubsub, "~> 1.0"},
       {:httpoison, "~> 1.2", override: true},
