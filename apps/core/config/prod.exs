@@ -6,8 +6,8 @@ config :core,
   redis_password: System.get_env("REDIS_PASSWORD")
 
 config :core,
-  verifications_ttl_email: System.get_env("VERIFICATION_EMAIL_TTL"),
-  verifications_ttl_phone: System.get_env("VERIFICATION_PHONE_TTL")
+  verifications_ttl_email: System.get_env("VERIFICATION_EMAIL_TTL") |> Integer.parse |> Kernel.elem(0),
+  verifications_ttl_phone: System.get_env("VERIFICATION_PHONE_TTL") |> Integer.parse |> Kernel.elem(0)
 
 config :core, :emails,
   create_profile_email: %{

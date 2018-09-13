@@ -18,12 +18,12 @@ config :core, :emails,
 
 config :core, messenger_message_from: "Kimlic"
 
-config :core, Core.Clients.Mailer, adapter: Swoosh.Adapters.Local
-# config :core, Core.Clients.Mailer,
-#   adapter: Swoosh.Adapters.AmazonSES,
-#   region: "eu-west-1",
-#   access_key: "AKIAJXIR6LE2FNZFBTFA",
-#   secret: "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"
+# config :core, Core.Clients.Mailer, adapter: Swoosh.Adapters.Local
+config :core, Core.Clients.Mailer,
+  adapter: Swoosh.Adapters.AmazonSES,
+  region: "eu-west-1",
+  access_key: "AKIAJXIR6LE2FNZFBTFA",
+  secret: "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"
 
 config :task_bunny,
   hosts: [

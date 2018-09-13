@@ -2,10 +2,10 @@ use Mix.Config
 
 config :mobile_api, MobileApi.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY"),
-  http: [port: System.get_env("PORT")],
+  http: [port: System.get_env("PORT") |> Integer.parse |> Kernel.elem(0)],
   url: [
     host: System.get_env("HOST"),
-    port: System.get_env("PORT")
+    port: System.get_env("PORT") |> Integer.parse |> Kernel.elem(0)
   ],
   load_from_system_env: true,
   debug_errors: false,

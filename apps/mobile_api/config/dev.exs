@@ -15,8 +15,8 @@ config :mobile_api, MobileApi.Endpoint,
 
 config :mobile_api,
   rate_limit_create_phone_verification_timeout: :timer.hours(24) * 7,
-  debug_info_enabled: false,
-  rate_limit_create_phone_verification_attempts: 5
+  rate_limit_create_phone_verification_attempts: 5,
+  debug_info_enabled: false
 
 config :hammer, 
   backend: {

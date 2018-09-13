@@ -1,13 +1,13 @@
 use Mix.Config
 
 config :quorum,
-  context_storage_address: "0x2df4143c5f976eb9d2cff8f7c3d8af13e551daf5",
-  kimlic_ap_address: "0x2d53b00ed1a56437b19adc4e6192c6d1b78f708c",
-  kimlic_ap_password: "",
-  veriff_ap_address: "0x4ff6e73edbb1fd166d69ad65950d99b29f447421",
-  veriff_ap_password: "",
-  profile_sync_user_address: "0xf4e9d429636991e57f0c15a15f0708456c379db1", # deployedConfig -> accountStorageAdapter -> owner -> accountAddress
-  profile_sync_user_password: "7c709482-d32e-4d7a-ad85-3ebaa3a3435c", # deployedConfig -> accountStorageAdapter -> owner -> accountPassword
+  context_storage_address: "0xd3683825a75852455fe69f206cba18dbf9afd8d2", # deployedConfig -> deployedContracts -> kimlicContextStorageAddress
+  kimlic_ap_address: "0x8de4bdeddddc58be3d5944cb05f63c8b492fecca", # partiesConfig -> createdParties -> kimlic -> address
+  kimlic_ap_password: "", # partiesConfig -> createdParties -> kimlic -> password
+  veriff_ap_address: "0xc3893fdf1b5ba17d1ec2ea23600f33d316272caf", # deployedConfig -> deployedContracts -> veriff -> address
+  veriff_ap_password: "", # deployedConfig -> deployedContracts -> veriff -> password
+  profile_sync_user_address: "0x1eea498f6e56b53a58c50f1dd9870e358760b9ec", # deployedConfig -> accountStorageAdapter -> owner -> accountAddress
+  profile_sync_user_password: "78db4170-0176-4f9c-b907-0db10ad2de7f", # deployedConfig -> accountStorageAdapter -> owner -> accountPassword
   gas: "0x1e8480",
   allowed_rpc_methods: [
     "web3_clientVersion",
@@ -20,7 +20,7 @@ config :quorum,
     "personal_unlockAccount"
   ]
 
-  config :task_bunny,
+config :task_bunny,
   hosts: [
     default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
   ]

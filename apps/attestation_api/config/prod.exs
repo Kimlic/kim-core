@@ -2,11 +2,11 @@ use Mix.Config
 
 config :attestation_api, AttestationApi.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY"),
-  http: [port: System.get_env("PORT")],
   url: [
     host: System.get_env("HOST"),
-    port: System.get_env("PORT")
+    port: System.get_env("PORT") |> Integer.parse |> Kernel.elem(0)
   ],
+  http: [port: System.get_env("PORT") |> Integer.parse |> Kernel.elem(0)],
   load_from_system_env: true,
   debug_errors: false,
   catch_errors: true,
@@ -17,11 +17,11 @@ config :attestation_api, AttestationApi.Repo,
   password: System.get_env("DB_PASSWORD"),
   database: System.get_env("DB_NAME"),
   hostname: System.get_env("DB_HOST"),
-  port: System.get_env("DB_PORT"),
+  port: "5432",
   timeout: 15_000,
   pool_timeout: 15_000,
   ownership_timeout: 15_000,
-  pool_size: System.get_env("DB_POOL_SIZE"),
+  pool_size: System.get_env("DB_POOL_SIZE") |> Integer.parse |> Kernel.elem(0),
   parameters: [application_name: "AttestationApi", statement_timeout: "5000"],
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 
