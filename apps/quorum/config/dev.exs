@@ -1,13 +1,13 @@
 use Mix.Config
 
 config :quorum,
-  context_storage_address: {:system, "CONTEXT_STORAGE_ADDRESS"},
-  kimlic_ap_address: {:system, "KIMLIC_AP_ADDRESS"},
-  kimlic_ap_password: "kimlicp@ssw0rd",
-  veriff_ap_address: {:system, "VERIFF_AP_ADDRESS"},
-  veriff_ap_password: "veriffp@ssw0rd",
-  profile_sync_user_address: {:system, "PROFILE_SYNC_USER_ADDRESS"},
-  profile_sync_user_password: "firstRelyingPartyp@ssw0rd",
+  context_storage_address: "0x2df4143c5f976eb9d2cff8f7c3d8af13e551daf5",
+  kimlic_ap_address: "0x2d53b00ed1a56437b19adc4e6192c6d1b78f708c",
+  kimlic_ap_password: "",
+  veriff_ap_address: "0x4ff6e73edbb1fd166d69ad65950d99b29f447421",
+  veriff_ap_password: "",
+  profile_sync_user_address: "0xf4e9d429636991e57f0c15a15f0708456c379db1", # deployedConfig -> accountStorageAdapter -> owner -> accountAddress
+  profile_sync_user_password: "7c709482-d32e-4d7a-ad85-3ebaa3a3435c", # deployedConfig -> accountStorageAdapter -> owner -> accountPassword
   gas: "0x1e8480",
   allowed_rpc_methods: [
     "web3_clientVersion",
@@ -20,14 +20,9 @@ config :quorum,
     "personal_unlockAccount"
   ]
 
-# config :task_bunny,
-#   hosts: [
-#     default: [connect_options: "amqp://localhost?heartbeat=30"]
-#   ]
-
-config :task_bunny,
+  config :task_bunny,
   hosts: [
-    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.206.183:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
+    default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
   ]
 
 config :ethereumex, url: "http://127.0.0.1:22000"

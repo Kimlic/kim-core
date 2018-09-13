@@ -45,7 +45,7 @@ defmodule AttestationApi.Clients.Veriffme do
         "timestamp" => timestamp(unix_timestamp)
       }
     }
-
+    IO.puts "CREATE SESSION: #{inspect request_data}"
     do_request("/sessions", request_data)
   end
 
@@ -114,6 +114,7 @@ defmodule AttestationApi.Clients.Veriffme do
 
   @spec do_request(atom, binary, map) :: api_response
   defp do_request(method \\ :post, url, request_data) do
+    IO.puts "URL: #{inspect (base_url() <> url)}"
     HTTPoison.request(method, base_url() <> url, Jason.encode!(request_data), headers(request_data), @request_options)
   end
 
@@ -124,12 +125,12 @@ defmodule AttestationApi.Clients.Veriffme do
   def contexts, do: @contexts
 
   @spec base_url :: binary
-  defp base_url, do: Application.get_env(:attestation_api, Veriffme, :api_url)
+  defp base_url, do: Application.get_env(:attestation_api, :veriff_api_url)
 
   @spec headers(map) :: list
   defp headers(request_data) do
-    auth_client = Application.get_env(:attestation_api, Veriffme, :auth_client)
-    api_secret = Application.get_env(:attestation_api, Veriffme, :api_secret)
+    auth_client = Application.get_env(:attestation_api, :veriff_auth_client)
+    api_secret = Application.get_env(:attestation_api, :veriff_api_secret)
 
     signature =
       :sha256

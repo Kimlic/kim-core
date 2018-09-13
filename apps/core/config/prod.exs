@@ -6,10 +6,8 @@ config :core,
   redis_password: System.get_env("REDIS_PASSWORD")
 
 config :core,
-  verifications_ttl: [
-    email: System.get_env("VERIFICATION_EMAIL_TTL"),
-    phone: System.get_env("VERIFICATION_PHONE_TTL")
-  ]
+  verifications_ttl_email: System.get_env("VERIFICATION_EMAIL_TTL"),
+  verifications_ttl_phone: System.get_env("VERIFICATION_PHONE_TTL")
 
 config :core, :emails,
   create_profile_email: %{

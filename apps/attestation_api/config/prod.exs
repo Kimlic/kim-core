@@ -25,12 +25,13 @@ config :attestation_api, AttestationApi.Repo,
   parameters: [application_name: "AttestationApi", statement_timeout: "5000"],
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 
-config :attestation_api, AttestationApi.Clients.Veriffme,
-  api_url: System.get_env("VERIFFME_API_URL"),
-  auth_client: System.get_env("VERIFFME_AUTH_CLIENT"),
-  api_secret: System.get_env("VERIFFME_API_SECRET")
+config :attestation_api,
+  veriff_api_url: System.get_env("VERIFFME_API_URL"),
+  veriff_auth_client: System.get_env("VERIFFME_AUTH_CLIENT"),
+  veriff_api_secret: System.get_env("VERIFFME_API_SECRET")
 
-config :attestation_api, AttestationApi.Clients.Push, push_url: System.get_env("PUSH_URL")
+config :attestation_api, 
+  push_url: System.get_env("PUSH_URL")
 
 config :ecto_logger_json, truncate_params: true
 

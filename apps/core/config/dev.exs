@@ -6,10 +6,8 @@ config :core,
   redis_password: nil
 
 config :core,
-  verifications_ttl: [
-    email: 24 * 60 * 60,
-    phone: 24 * 60 * 60
-  ]
+  verifications_ttl_email: 24 * 60 * 60,
+  verifications_ttl_phone: 24 * 60 * 60
 
 config :core, :emails,
   create_profile_email: %{
@@ -21,16 +19,16 @@ config :core, :emails,
 config :core, messenger_message_from: "Kimlic"
 
 config :core, Core.Clients.Mailer, adapter: Swoosh.Adapters.Local
+# config :core, Core.Clients.Mailer,
+#   adapter: Swoosh.Adapters.AmazonSES,
+#   region: "eu-west-1",
+#   access_key: "AKIAJXIR6LE2FNZFBTFA",
+#   secret: "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"
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.244.242:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
+    default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
   ]
-
-# config :task_bunny,
-#   hosts: [
-#     default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
-#   ]
 
 config :core,
   sync_fields: [

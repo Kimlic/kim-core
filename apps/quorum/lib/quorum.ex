@@ -80,11 +80,10 @@ defmodule Quorum do
     Log.info("[#{__MODULE__}] validate_account_field_has_no_verification: #{inspect(result)}")
 
     case result do
-      {:ok, @hashed_false} ->
-        :ok
-
-      {:ok, contract_address} ->
-        validate_verification_contract_expired(contract_address, profile_sync_user_address)
+      {:ok, @hashed_false} -> :ok
+      {:ok, contract_address} -> 
+        contract_address
+        |> validate_verification_contract_expired(profile_sync_user_address)
 
       err ->
         Log.error("[#{__MODULE__}] Fail to call get_last_field_verification_contract_address #{inspect(err)}")

@@ -46,9 +46,8 @@ defmodule AttestationApi.DigitalVerifications do
          "lang" => lang,
          "timestamp" => timestamp
        }) do
-    with {:ok, %{body: body, status_code: 201}} <-
-           @veriffme_client.create_session(first_name, last_name, lang, document_type, timestamp),
-         {:ok, %{"status" => "success", "verification" => %{"id" => session_id}}} <- Jason.decode(body) do
+    with {:ok, %{body: body, status_code: 201}} <- @veriffme_client.create_session(first_name, last_name, lang, document_type, timestamp),
+    {:ok, %{"status" => "success", "verification" => %{"id" => session_id}}} <- Jason.decode(body) do
       {:ok, session_id}
     else
       err ->
