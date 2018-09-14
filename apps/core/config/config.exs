@@ -8,7 +8,7 @@ config :core,
 
 config :core, :emails,
   create_profile_email: %{
-    from_email: "verification@kimlic.com",
+    from_email: "dmytro@kimlic.com",
     from_name: "Kimlic",
     subject: "Kimlic - New user email verification"
   }

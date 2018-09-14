@@ -16,6 +16,7 @@ config :attestation_api, AttestationApi.Endpoint,
   watchers: []
 
 config :attestation_api, AttestationApi.Repo,
+  database: "ap_server",
   port: "5432",
   timeout: 15_000,
   pool_timeout: 15_000,

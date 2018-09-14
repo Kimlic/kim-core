@@ -9,7 +9,6 @@ config :attestation_api, AttestationApi.Endpoint,
 config :attestation_api, AttestationApi.Repo,
   username: "kimlic",
   password: "kimlic",
-  database: "attestation_api_dev",
   hostname: "localhost",
   pool_size: 10,
   loggers: [{Ecto.LoggerJSON, :log, [:debug]}]
