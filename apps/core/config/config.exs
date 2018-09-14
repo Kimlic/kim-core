@@ -6,28 +6,28 @@ config :core,
   verifications_ttl_email: 24 * 60 * 60,
   verifications_ttl_phone: 24 * 60 * 60
 
-config :core, :emails,
+config :core,
+  messenger_message_from: "Kimlic",
   create_profile_email: %{
     from_email: "dmytro@kimlic.com",
     from_name: "Kimlic",
     subject: "Kimlic - New user email verification"
   }
 
-config :core, messenger_message_from: "Kimlic"
+config :core, Core.Clients.Mailer, adapter: Swoosh.Adapters.AmazonSES
+
+config :core, sync_fields: [
+  "email",
+  "phone",
+  "documents.id_card",
+  "documents.passport",
+  "documents.driver_license",
+  "documents.residence_permit_card"
+]
 
 config :core,
-  sync_fields: [
-    "email",
-    "phone",
-    "documents.id_card",
-    "documents.passport",
-    "documents.driver_license",
-    "documents.residence_permit_card"
-  ]
-
-config :core, :dependencies,
-  messenger: Core.Clients.Messenger,
-  push_sender: Core.Push.PushSender
+  dependencies_messenger: Core.Clients.Messenger,
+  dependencies_push_sender: Core.Push.PushSender
 
 config :task_bunny,
   core_queue: [

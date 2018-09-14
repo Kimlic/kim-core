@@ -11,7 +11,7 @@ defmodule Core.Email.Views.EmailVerification do
 
   @spec render(binary, binary) :: Swoosh.Email.t()
   def render(email, code) do
-    email_data = Application.get_env(:core, :emails, :create_profile_email)
+    email_data = Application.get_env(:core, :create_profile_email)
     mail_html = __MODULE__.create_profile_email(code)
 
     new()

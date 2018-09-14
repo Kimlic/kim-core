@@ -7,8 +7,8 @@ config :core,
 config :core, Core.Clients.Mailer,
   adapter: Swoosh.Adapters.AmazonSES,
   region: "eu-west-1",
-  access_key: "AKIAJLNAMPLSK62TWHBA",
-  secret: "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"
+  access_key: "AKIAIZDB5U6XJYGO4OFQ",
+  secret: "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"
 
 config :task_bunny,
   hosts: [
