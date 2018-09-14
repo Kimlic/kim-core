@@ -34,7 +34,7 @@ defmodule Core.MixProject do
 
   defp deps do
     [
-      {:plug, github: "PharosProduction/plug", override: true},
+      {:plug, github: "Kimlic/plug", override: true},
       {:cowboy, "~> 2.4", [github: "Kimlic/cowboy", override: true, manager: :rebar3]},
       {:redix, ">= 0.0.0"},
       {:ecto, "~> 2.1"},
