@@ -6,7 +6,18 @@ alias Quorum.Jobs.TransactionStatus
 config :quorum,
   client: Quorum.Ethereumex.HttpClient,
   proxy_client: Quorum.Proxy.Client,
-  contract_client: Quorum.Contract
+  contract_client: Quorum.Contract,
+  gas: "0x1e8480",
+  allowed_rpc_methods: [
+    "web3_clientVersion",
+    "eth_call",
+    "eth_sendTransaction",
+    "eth_sendRawTransaction",
+    "eth_getTransactionCount",
+    "getTransactionReceipt",
+    "personal_newAccount",
+    "personal_unlockAccount"
+  ]
 
 config :ethereumex,
   http_options: [ssl: [{:versions, [:"tlsv1.2"]}], recv_timeout: 30_000, timeout: 30_000]

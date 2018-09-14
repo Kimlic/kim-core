@@ -1,24 +1,13 @@
 use Mix.Config
 
 config :quorum,
-  context_storage_address: "0xd3683825a75852455fe69f206cba18dbf9afd8d2", # deployedConfig -> deployedContracts -> kimlicContextStorageAddress
-  kimlic_ap_address: "0x8de4bdeddddc58be3d5944cb05f63c8b492fecca", # partiesConfig -> createdParties -> kimlic -> address
+  context_storage_address: "0x878a8d7915eefb13a26e10962b4a0096f385bfe8", # deployedConfig -> deployedContracts -> kimlicContextStorageAddress
+  kimlic_ap_address: "0xe5d723246c020659215ac3154966cb797c24cbaf", # partiesConfig -> createdParties -> kimlic -> address
   kimlic_ap_password: "", # partiesConfig -> createdParties -> kimlic -> password
-  veriff_ap_address: "0xc3893fdf1b5ba17d1ec2ea23600f33d316272caf", # deployedConfig -> deployedContracts -> veriff -> address
+  veriff_ap_address: "0x64dcb6f92d1b3b63e41a2d309e7aab4c1dcbaa38", # deployedConfig -> deployedContracts -> veriff -> address
   veriff_ap_password: "", # deployedConfig -> deployedContracts -> veriff -> password
-  profile_sync_user_address: "0x1eea498f6e56b53a58c50f1dd9870e358760b9ec", # deployedConfig -> accountStorageAdapter -> owner -> accountAddress
-  profile_sync_user_password: "78db4170-0176-4f9c-b907-0db10ad2de7f", # deployedConfig -> accountStorageAdapter -> owner -> accountPassword
-  gas: "0x1e8480",
-  allowed_rpc_methods: [
-    "web3_clientVersion",
-    "eth_call",
-    "eth_sendTransaction",
-    "eth_sendRawTransaction",
-    "eth_getTransactionCount",
-    "getTransactionReceipt",
-    "personal_newAccount",
-    "personal_unlockAccount"
-  ]
+  profile_sync_user_address: "0x969675d3bdf6165ec7d36cb5407dbfe257bc6a6c", # deployedConfig -> accountStorageAdapter -> owner -> accountAddress
+  profile_sync_user_password: "cbf8c620-5539-4e1d-b720-796a0e6a3fba" # deployedConfig -> accountStorageAdapter -> owner -> accountPassword
 
 config :task_bunny,
   hosts: [

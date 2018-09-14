@@ -45,7 +45,6 @@ defmodule AttestationApi.Clients.Veriffme do
         "timestamp" => timestamp(unix_timestamp)
       }
     }
-    IO.puts "CREATE SESSION: #{inspect request_data}"
     do_request("/sessions", request_data)
   end
 
@@ -114,8 +113,14 @@ defmodule AttestationApi.Clients.Veriffme do
 
   @spec do_request(atom, binary, map) :: api_response
   defp do_request(method \\ :post, url, request_data) do
-    IO.puts "URL: #{inspect (base_url() <> url)}"
-    HTTPoison.request(method, base_url() <> url, Jason.encode!(request_data), headers(request_data), @request_options)
+    req_url = base_url() <> url
+    IO.puts "URL: #{inspect req_url}"
+    req_headers = headers(request_data)
+    IO.puts "HEADERS: #{inspect req_headers}"
+    req_data = Jason.encode!(request_data)
+    IO.puts "DATA: #{inspect req_data}"
+    
+    HTTPoison.request(method, req_url, req_data, req_headers, @request_options)
   end
 
   @doc """

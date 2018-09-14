@@ -7,13 +7,11 @@ config :quorum,
   veriff_ap_address: System.get_env("VERIFF_AP_ADDRESS"),
   veriff_ap_password: System.get_env("VERIFF_AP_PASSWORD"),
   profile_sync_user_address: System.get_env("PROFILE_SYNC_USER_ADDRESS"),
-  profile_sync_user_password: System.get_env("PROFILE_SYNC_USER_PASSWORD"),
-  gas: System.get_env("QUORUM_GAS"),
-  allowed_rpc_methods: System.get_env("QUORUM_ALLOWED_RPC_METHODS")
+  profile_sync_user_password: System.get_env("PROFILE_SYNC_USER_PASSWORD")
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: "amqp://kimlic:v2re3X7tMP@51.140.206.183:5672?heartbeat=30"] # System.get_env("RABBIT_URI")]
+    default: [connect_options: System.get_env("RABBIT_URI")]
   ]
 
 config :ethereumex, url: System.get_env("QUORUM_URI")
