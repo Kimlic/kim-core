@@ -14,4 +14,4 @@ config :task_bunny,
     default: [connect_options: System.get_env("RABBIT_URI")]
   ]
 
-config :ethereumex, url: System.get_env("QUORUM_URI")
+config :ethereumex, url: "#{System.get_env("RABBIT_URI")}"

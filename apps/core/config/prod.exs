@@ -12,5 +12,5 @@ config :core, Core.Clients.Mailer,
 
 config :task_bunny,
   hosts: [
-    default: [connect_options: System.get_env("RABBIT_URI")]
+    default: [connect_options: "#{System.get_env("RABBIT_URI")}"]
   ]
