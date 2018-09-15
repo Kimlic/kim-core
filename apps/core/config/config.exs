@@ -9,7 +9,7 @@ config :core,
 config :core,
   messenger_message_from: "Kimlic",
   create_profile_email: %{
-    from_email: "dmytro@kimlic.com",
+    from_email: "verification@kimlic.com",
     from_name: "Kimlic",
     subject: "Kimlic - New user email verification"
   }
