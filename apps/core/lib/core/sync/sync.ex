@@ -20,8 +20,7 @@ defmodule Core.Sync do
     unlock_profile_sync_user()
     account_storage_adapter_address = Context.get_account_storage_adapter_address()
 
-    :core
-    |> Application.get_env(:core, :sync_fields)
+    Application.get_env(:core, :sync_fields)
     |> Enum.filter(
       &Kernel.==(
         Quorum.validate_account_field_exists_and_set(account_address, &1, account_storage_adapter_address),
