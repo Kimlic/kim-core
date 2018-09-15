@@ -5,7 +5,6 @@ config :core,
   redis_password: "NxCFs4gNxvbga51ySs0gQokCBTve1JBXmMoJtIj4Dxo=" # System.get_env("REDIS_PASSWORD")
 
 config :core, Core.Clients.Mailer,
-  adapter: Swoosh.Adapters.AmazonSES,
   region: "eu-west-1",
   access_key: "AKIAIZDB5U6XJYGO4OFQ",
   secret: "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"

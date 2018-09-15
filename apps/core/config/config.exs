@@ -25,9 +25,9 @@ config :core, sync_fields: [
   "documents.residence_permit_card"
 ]
 
-config :core,
-  dependencies_messenger: Core.Clients.Messenger,
-  dependencies_push_sender: Core.Push.PushSender
+config :core, :dependencies,
+  messenger: Core.Clients.Messenger,
+  push_sender: Core.Push.PushSender
 
 config :task_bunny,
   core_queue: [
