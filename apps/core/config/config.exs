@@ -41,8 +41,7 @@ config :task_bunny,
 config :pigeon, :apns,
   apns_default: %{
     cert: {:core, "cert.pem"},
-    key: {:core, "key_unencrypted.pem"},
-    mode: :dev
+    key: {:core, "key_unencrypted.pem"}
   }
 
 config :pigeon, :fcm,
