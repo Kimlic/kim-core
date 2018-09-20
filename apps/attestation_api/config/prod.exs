@@ -7,9 +7,11 @@ config :attestation_api, AttestationApi.Endpoint,
   check_origin: false
   
 config :attestation_api, AttestationApi.Repo,
-  username: "kimlic@stage-postgresql-ap", # System.get_env("DB_USER"),
+  #username: "kimlic@stage-postgresql-ap", # System.get_env("DB_USER"),
+  username: "kimlic", # System.get_env("DB_USER"),
   password: "LU6dME4NzQ", # System.get_env("DB_PASSWORD"),
-  hostname: "stage-postgresql-ap.postgres.database.azure.com", # System.get_env("DB_HOST"),
+  #hostname: "stage-postgresql-ap.postgres.database.azure.com", # System.get_env("DB_HOST"),
+  hostname: "stage-postgresql-ap.eastus.cloudapp.azure.com", # System.get_env("DB_HOST"),
   pool_size: 10, # System.get_env("DB_POOL") |> Integer.parse |> elem(0),
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 
