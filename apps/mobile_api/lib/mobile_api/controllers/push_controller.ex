@@ -20,6 +20,8 @@ defmodule MobileApi.PushController do
   def send_push(conn, %{"message" => message, "device_os" => device_os, "device_token" => device_token}) do
     with :ok <- Push.enqueue(message, device_os, device_token) do
       json(conn, %{"status" => "ok"})
+    else
+      {:error, notification} -> IO.inspect "PUSH ERROR: #{inspect notification}"
     end
   end
 end
