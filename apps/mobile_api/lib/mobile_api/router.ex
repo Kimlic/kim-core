@@ -19,6 +19,11 @@ defmodule MobileApi.Router do
     plug(AccountAddress)
   end
 
+
+  pipeline :quorum_proxy do
+    plug(:accepts, ["json"])
+  end
+
   pipeline :create_phone_verification_limiter do
     plug(PhoneVerificationLimiter)
   end
