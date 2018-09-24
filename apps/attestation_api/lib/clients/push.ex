@@ -15,14 +15,16 @@ defmodule AttestationApi.Clients.Push do
   """
   @spec send(binary, binary, binary) :: :ok
   def send(message, device_os, device_token) when device_os in @available_device_os do
-    with {:ok, node_id} <- get_node_id(),
-         {:ok, _response} <-
+   IO.puts "MESSAGE: #{inspect message}  OS: #{inspect device_os}   TOKEN: #{inspect device_token}"
+	 with {:ok, node_id} <- get_node_id(),
+         {:ok, response} <-
            HTTPoison.post(
              push_url(),
              Jason.encode!(%{"message" => message, "device_os" => device_os, "device_token" => device_token}),
              headers(node_id),
              @request_options
            ) do
+IO.puts "RESPONSE: #{inspect response}"
       :ok
     else
       err ->
@@ -33,7 +35,9 @@ defmodule AttestationApi.Clients.Push do
 
   @spec get_node_id :: {:ok, binary} | {:error, binary}
   defp get_node_id do
+	IO.puts "NODE INFO: #{inspect @quorum_client.request("admin_nodeInfo", %{"id" => 1}, [])}"
     with {:ok, %{"id" => node_id}} <- @quorum_client.request("admin_nodeInfo", %{"id" => 1}, []) do
+IO.puts "NODEID: #{node_id}"
       {:ok, node_id}
     end
   end
@@ -45,6 +49,7 @@ defmodule AttestationApi.Clients.Push do
   defp headers(node_id),
     do: [
       "Content-Type": "application/json",
+      "account-address": "0x4aabc1c45ff64c562209d2207617f632184649a1",
       "node-id": node_id
     ]
 end

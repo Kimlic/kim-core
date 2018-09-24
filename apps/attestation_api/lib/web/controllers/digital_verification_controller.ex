@@ -43,6 +43,7 @@ defmodule AttestationApi.DigitalVerificationController do
   """
   @spec verification_submission_webhook(Conn.t(), map) :: Conn.t()
   def verification_submission_webhook(conn, params) do
+  IO.puts "AAAAAAAAA: #{inspect params}"
     with :ok <- DigitalVerifications.handle_verification_submission(params) do
       json(conn, %{})
     end
@@ -53,7 +54,8 @@ defmodule AttestationApi.DigitalVerificationController do
   """
   @spec verification_result_webhook(Conn.t(), map) :: Conn.t()
   def verification_result_webhook(conn, params) do
-    with :ok <- DigitalVerifications.handle_verification_result(params) do
+  IO.puts "BBBBBBBBBBBB: #{inspect params}"  
+  with :ok <- DigitalVerifications.handle_verification_result(params) do
       json(conn, %{})
     end
   end

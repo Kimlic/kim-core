@@ -15,4 +15,4 @@ config :attestation_api, AttestationApi.Repo,
   pool_size: 20, # System.get_env("DB_POOL") |> Integer.parse |> elem(0),
   loggers: [{Ecto.LoggerJSON, :log, [:info]}]
 
-config :attestation_api, push_url: "http://23.96.41.254:4000" # System.get_env("PUSH_URL")
+config :attestation_api, push_url: "http://23.96.41.254:4000/api/push" # System.get_env("PUSH_URL")

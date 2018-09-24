@@ -19,14 +19,6 @@ defmodule MobileApi.Router do
     plug(AccountAddress)
   end
 
-  pipeline :node_id do
-    plug(NodeId)
-  end
-
-  pipeline :quorum_proxy do
-    plug(:accepts, ["json"])
-  end
-
   pipeline :create_phone_verification_limiter do
     plug(PhoneVerificationLimiter)
   end
@@ -49,7 +41,6 @@ defmodule MobileApi.Router do
     end
 
     scope "/" do
-      pipe_through(:node_id)
       post("/push", PushController, :send_push)
     end
 

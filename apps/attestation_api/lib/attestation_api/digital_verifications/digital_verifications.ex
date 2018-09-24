@@ -63,7 +63,8 @@ defmodule AttestationApi.DigitalVerifications do
   """
   @spec handle_verification_result(map) :: :ok | {:error, atom}
   def handle_verification_result(params) do
-    with %{"verification" => %{"id" => _} = verification_result} <- params,
+  IO.puts "AAAAA: #{inspect params}"   
+      with %{"verification" => %{"id" => _} = verification_result} <- params,
          {:ok, verification} <- update_status(verification_result),
          :ok <- send_push_notification(verification),
          {_deleted_count, nil} <- remove_verification_documents(verification),
@@ -108,8 +109,9 @@ defmodule AttestationApi.DigitalVerifications do
   end
 
   @spec send_push_notification(%DigitalVerification{}) :: :ok
-  defp send_push_notification(%DigitalVerification{device_os: device_os, device_token: device_token, status: status}) do
-    status_message =
+  defp send_push_notification(%DigitalVerification{device_os: device_os, device_token: device_token, status: status}=params) do
+  IO.puts "CCCCCC: #{inspect params}"  
+  status_message =
       case status do
         @verification_status_passed -> "passed"
         _ -> "failed"
