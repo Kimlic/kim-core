@@ -18,10 +18,10 @@ config :attestation_api, AttestationApi.Endpoint,
 config :attestation_api, AttestationApi.Repo,
   database: "ap_server",
   port: "5432",
-  timeout: 15_000,
-  pool_timeout: 15_000,
-  ownership_timeout: 15_000,
-  parameters: [application_name: "AttestationApi", statement_timeout: "5000"]
+  timeout: 180_000,
+  pool_timeout: 180_000,
+  ownership_timeout: 180_000
+  # parameters: [application_name: "AttestationApi", statement_timeout: "180_000"]
   
 config :attestation_api,
   veriff_api_url: "https://api.veriff.me/v1",
