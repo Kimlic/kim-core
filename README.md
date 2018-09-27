@@ -6,6 +6,7 @@ For Docker environment configuration read
 
 ## Travis CI -> Jenkins
 
+
 Kimlic-elixir repository integrated with [Travis CI](https://travis-ci.com/Kimlic/kimlic-elixir/builds).
 For automatic semantic versioning CI requires proper commit message for each commit in pull requests.
 
