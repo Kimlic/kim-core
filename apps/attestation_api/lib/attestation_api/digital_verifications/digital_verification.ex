@@ -18,6 +18,8 @@ defmodule AttestationApi.DigitalVerifications.DigitalVerification do
     veriffme_status
     veriffme_reason
     veriffme_comments
+    veriffme_document
+    veriffme_person
   )a
 
   @status_new "NEW"
@@ -49,6 +51,8 @@ defmodule AttestationApi.DigitalVerifications.DigitalVerification do
     field(:veriffme_status, :string)
     field(:veriffme_reason, :string)
     field(:veriffme_comments, {:array, :map})
+    field(:veriffme_document, :map)
+    field(:veriffme_person, :map)
     timestamps()
 
     has_many(:documents, DigitalVerificationDocument, foreign_key: :verification_id)

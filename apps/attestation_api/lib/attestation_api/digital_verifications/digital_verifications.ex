@@ -60,41 +60,64 @@ defmodule AttestationApi.DigitalVerifications do
   @doc """
   Handles webhook from Veriff.me with verification result
   Updates verification status, sends push notification, removes verification documents and set verification result in Quorum
+  %{
+    "status" => "success", 
+    "technicalData" => %{
+      "ip" => nil
+    }, 
+    "verification" => %{
+      "acceptanceTime" => "2018-09-21T15:53:34.000Z", 
+      "additionalVerifiedData" => %{}, 
+      "code" => 9001, 
+      "comments" => [], 
+      "document" => %{
+        "country" => "UA", 
+        "number" => "370168", 
+        "type" => "DRIVERS_LICENSE", 
+        "validFrom" => "2002-10-08", 
+        "validUntil" => nil
+      }, 
+      "id" => "1f33bfd1-5b15-4e6e-988d-8748ce5aace1", 
+      "person" => %{
+        "citizenship" => nil, 
+        "dateOfBirth" => "1984-01-17", 
+        "firstName" => "Volodymyr", 
+        "gender" => "M", 
+        "idNumber" => "", 
+        "lastName" => "Babenko", 
+        "nationality" => nil
+      }, 
+      "reason" => nil, 
+      "status" => "approved"
+    }
+  }
   """
   @spec handle_verification_result(map) :: :ok | {:error, atom}
   def handle_verification_result(params) do
-  IO.puts "AAAAA: #{inspect params}"   
-      with %{"verification" => %{"id" => _} = verification_result} <- params,
-         {:ok, verification} <- update_status(verification_result),
-         :ok <- send_push_notification(verification),
-         {_deleted_count, nil} <- remove_verification_documents(verification),
-         :ok <- set_quorum_verification_result(verification) do
+    IO.puts "BBBB: #{inspect params}"
+    with %{"verification" => %{"id" => _} = verification_result} <- params,
+    {:ok, verification} <- update_status(verification_result),
+    :ok <- send_push_notification(verification),
+    {_deleted_count, nil} <- remove_verification_documents(verification),
+    :ok <- set_quorum_verification_result(verification) do
       log_data = Map.take(verification_result, ["id", "status", "code", "acceptanceTime"])
-
       Log.info("[#{__MODULE__}] Success on Veriff decision webhook, params: #{inspect(log_data)}")
       :ok
     else
       err ->
-        log_data =
-          params
-          |> pop_in(["verification", "person"])
-          |> elem(1)
+        log_data = params
+        |> pop_in(["verification", "person"])
+        |> elem(1)
 
-        Log.error(
-          "[#{__MODULE__}] Fail to handle Veriff decision webhook with error: #{inspect(err)} and params: #{
-            inspect(log_data)
-          }"
-        )
-
+        Log.error("[#{__MODULE__}] Fail to handle Veriff decision webhook with error: #{inspect err} and params: #{inspect log_data}")
         err
     end
   end
 
   @spec update_status(map) :: :ok | {:error, atom}
   defp update_status(%{"id" => session_id} = verification_result) do
-    with %DigitalVerification{} = verification <-
-           DigitalVerifications.get_by(%{session_id: session_id, status: @verification_status_pending}),
-         {:ok, verification} <- update(verification, get_verification_data_from_result(verification_result)) do
+    with %DigitalVerification{} = verification <- DigitalVerifications.get_by(%{session_id: session_id, status: @verification_status_pending}),
+    {:ok, verification} <- update(verification, get_verification_data_from_result(verification_result)) do
       {:ok, verification}
     else
       _ -> {:error, :not_found}
@@ -110,7 +133,6 @@ defmodule AttestationApi.DigitalVerifications do
 
   @spec send_push_notification(%DigitalVerification{}) :: :ok
   defp send_push_notification(%DigitalVerification{device_os: device_os, device_token: device_token, status: status}=params) do
-  IO.puts "CCCCCC: #{inspect params}"  
   status_message =
       case status do
         @verification_status_passed -> "passed"
@@ -121,29 +143,31 @@ defmodule AttestationApi.DigitalVerifications do
   end
 
   @spec get_verification_data_from_result(map) :: map
-  defp get_verification_data_from_result(%{"code" => code, "status" => veriffme_status})
-       when code == @verification_code_success do
+  defp get_verification_data_from_result(%{"code" => code, "status" => veriffme_status, "document" => document, "person" => person}) when code == @verification_code_success do
     %{
       status: DigitalVerification.status(:passed),
       veriffme_code: code,
-      veriffme_status: veriffme_status
+      veriffme_status: veriffme_status,
+      veriffme_document: document,
+      veriffme_person: person
     }
   end
 
   @spec get_verification_data_from_result(map) :: map
   defp get_verification_data_from_result(verification_result) do
-    status =
-      case verification_result["code"] do
-        @verification_code_resubmission -> DigitalVerification.status(:resubmission_requested)
-        _ -> DigitalVerification.status(:failed)
-      end
-
+    status = case verification_result["code"] do
+      @verification_code_resubmission -> DigitalVerification.status(:resubmission_requested)
+      _ -> DigitalVerification.status(:failed)
+    end
+    
     %{
       status: status,
       veriffme_code: verification_result["code"],
       veriffme_status: verification_result["status"],
       veriffme_reason: verification_result["reason"],
-      veriffme_comments: verification_result["comments"]
+      veriffme_comments: verification_result["comments"],
+      veriffme_document: verification_result["document"],
+      veriffme_person: verification_result["person"]
     }
   end
 
@@ -160,8 +184,8 @@ defmodule AttestationApi.DigitalVerifications do
   @spec handle_verification_submission(map) :: :ok
   def handle_verification_submission(params) do
     with %{"id" => session_id, "code" => code} = log_data <- params,
-         %DigitalVerification{} = verification <- get_by(%{session_id: session_id}),
-         {:ok, _verification} = update(verification, %{veriffme_code: code}) do
+    %DigitalVerification{} = verification <- get_by(%{session_id: session_id}),
+    {:ok, _verification} = update(verification, %{veriffme_code: code}) do
       Log.info("[#{__MODULE__}] Success on Veriff submission webhook, params: #{inspect(log_data)}")
     else
       err ->
