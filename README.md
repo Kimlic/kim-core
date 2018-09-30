@@ -4,7 +4,8 @@
 For Docker environment configuration read
 [ENVIRONMENT.md](https://github.com/Kimlic/kimlic-elixir/blob/develop/docs/ENVIRONMENT.md)
 
-## Travis CI
+## Travis CI -> Jenkins
+
 
 Kimlic-elixir repository integrated with [Travis CI](https://travis-ci.com/Kimlic/kimlic-elixir/builds).
 For automatic semantic versioning CI requires proper commit message for each commit in pull requests.
