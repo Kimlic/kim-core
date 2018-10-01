@@ -18,9 +18,9 @@ config :attestation_api, AttestationApi.Endpoint,
 config :attestation_api, AttestationApi.Repo,
   database: "ap_server",
   port: "5432",
-  timeout: 180_000,
-  pool_timeout: 180_000,
-  ownership_timeout: 180_000
+  timeout: 30_000,
+  pool_timeout: 30_000,
+  ownership_timeout: 30_000
   # parameters: [application_name: "AttestationApi", statement_timeout: "180_000"]
   
 config :attestation_api,
