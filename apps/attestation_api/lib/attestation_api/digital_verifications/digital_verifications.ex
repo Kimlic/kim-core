@@ -38,6 +38,18 @@ defmodule AttestationApi.DigitalVerifications do
     end
   end
 
+  def verification_info(session_tag) do
+    res = Repo.one from dv in DigitalVerification,
+      where: dv.session_id == ^session_tag,
+      select: [:veriffme_document, :veriffme_person],
+      limit: 1
+    
+    case res do
+      nil -> {:error, :not_found}
+      verification -> {:ok, verification}
+    end
+  end
+
   @spec create_session_on_veriffme(map) :: {:ok, binary} | {:error, {atom, binary}}
   defp create_session_on_veriffme(%{
          "first_name" => first_name,
@@ -131,7 +143,7 @@ defmodule AttestationApi.DigitalVerifications do
   end
 
   @spec send_push_notification(%DigitalVerification{}) :: :ok
-  defp send_push_notification(%DigitalVerification{device_os: device_os, device_token: device_token, status: status}=params) do
+  defp send_push_notification(%DigitalVerification{device_os: device_os, device_token: device_token, status: status}) do
   status_message =
       case status do
         @verification_status_passed -> "passed"

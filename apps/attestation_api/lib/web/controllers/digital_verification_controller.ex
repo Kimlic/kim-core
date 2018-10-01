@@ -63,11 +63,19 @@ defmodule AttestationApi.DigitalVerificationController do
   """
   @spec get_vendors(Conn.t(), map) :: Conn.t()
   def get_vendors(conn, _params) do
-    # todo: Ensure application logs are stored in Kibana and remove it
-    Log.info(%{"message" => "#{__MODULE__} Request get_vendors", "log_tag" => "get_vendors"})
-    Log.warn(%{"message" => "#{__MODULE__} Request get_vendors", "log_tag" => "get_vendors"})
-    Log.error(%{"message" => "#{__MODULE__} Request get_vendors", "log_tag" => "get_vendors"})
-
     json(conn, VendorDocuments.all())
+  end
+
+  def verification_info(conn, %{"session_tag" => session_tag}) do
+    with {:ok, verifications} <- DigitalVerifications.verification_info(session_tag) do
+      IO.puts "RES: #{inspect verifications}"
+      res = %{
+        person: verifications.veriffme_person,
+        document: verifications.veriffme_document
+      }
+      json(conn, res)
+    else
+      {:error, :not_found} -> json(conn, %{status: "not_found"})
+    end
   end
 end
