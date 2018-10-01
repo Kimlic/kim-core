@@ -94,7 +94,6 @@ defmodule AttestationApi.DigitalVerifications do
   """
   @spec handle_verification_result(map) :: :ok | {:error, atom}
   def handle_verification_result(params) do
-    IO.puts "BBBB: #{inspect params}"
     with %{"verification" => %{"id" => _} = verification_result} <- params,
     {:ok, verification} <- update_status(verification_result),
     :ok <- send_push_notification(verification),
