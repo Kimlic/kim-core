@@ -23,6 +23,7 @@ defmodule AttestationApi.DigitalVerificationController do
   """
   @spec create_session(Conn.t(), map) :: Conn.t()
   def create_session(conn, params) do
+    IO.puts "AAAAA: #{inspect conn.assigns.account_address}"
     with {:ok, session_id} <- DigitalVerifications.create_session(conn.assigns.account_address, params) do
       json(conn, %{session_id: session_id})
     end
