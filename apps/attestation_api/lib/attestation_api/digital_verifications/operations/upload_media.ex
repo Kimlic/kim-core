@@ -24,13 +24,13 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
   @spec handle(map) :: :ok | {:error, atom | binary}
   def handle(%{"session_id" => session_id} = params) do
     with %DigitalVerification{documents: documents} = verification <- get_verification_and_documents(session_id),
-         :ok <- VendorDocuments.check_context_items(verification, params),
-         {:ok, new_document} <- create_digital_verification_document(params, verification),
-         documents <- [new_document] ++ documents,
-         :ok <- check_all_documents_are_loaded(documents, verification),
-         :ok <- veriffme_upload_media(session_id, documents),
-         :ok <- veriffme_close_session(session_id),
-         {:ok, _verification} <- set_pending_status(verification) do
+    :ok <- VendorDocuments.check_context_items(verification, params),
+    {:ok, new_document} <- create_digital_verification_document(params, verification),
+    documents <- [new_document] ++ documents,
+    :ok <- check_all_documents_are_loaded(documents, verification),
+    :ok <- veriffme_upload_media(session_id, documents),
+    :ok <- veriffme_close_session(session_id),
+    {:ok, _verification} <- set_pending_status(verification) do
       :ok
     else
       {:error, :wait_more_documents} -> :ok
@@ -43,15 +43,14 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
     document_contexts = Enum.map(documents, & &1.context)
 
     with {:ok, %{"contexts" => vendor_contexts}} = VendorDocuments.get_document_type_data(document_type),
-         [] <- vendor_contexts -- document_contexts do
+    [] <- vendor_contexts -- document_contexts do
       :ok
     else
       _ -> {:error, :wait_more_documents}
     end
   end
 
-  @spec create_digital_verification_document(map, %DigitalVerification{}) ::
-          {:ok, DigitalVerificationDocument} | {:error, binary}
+  @spec create_digital_verification_document(map, %DigitalVerification{}) :: {:ok, DigitalVerificationDocument} | {:error, binary}
   defp create_digital_verification_document(params, %DigitalVerification{id: verification_id}) do
     %{
       verification_id: verification_id,
@@ -82,7 +81,7 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
     |> Task.async_stream(
       fn %{context: context, content: image_base64, timestamp: timestamp} ->
         with {:ok, %{body: body}} <- @veriffme_client.upload_media(session_id, context, image_base64, timestamp),
-             {:ok, %{"status" => "success"}} <- Jason.decode(body) do
+        {:ok, %{"status" => "success"}} <- Jason.decode(body) do
           :ok
         end
       end,
@@ -93,24 +92,18 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
       item, _ -> {:halt, item}
     end)
     |> case do
-      :ok ->
-        :ok
-
-      err ->
-        Log.error("[#{__MODULE__}] Fail to upload media on veriffme. Error: #{inspect(err)}")
-        {:error, {:internal_error, "Fail to upload media on verification"}}
+      :ok -> :ok
+      err -> {:error, {:internal_error, "Fail to upload media on verification"}}
     end
   end
 
   @spec veriffme_close_session(binary) :: :ok | {:error, {:internal_error, binary}}
   defp veriffme_close_session(session_id) do
     with {:ok, %HTTPoison.Response{body: body, status_code: 200}} <- @veriffme_client.close_session(session_id),
-         {:ok, %{"status" => "success", "verification" => %{"status" => "submitted"}}} <- Jason.decode(body) do
+    {:ok, %{"status" => "success", "verification" => %{"status" => "submitted"}}} <- Jason.decode(body) do
       :ok
     else
-      err ->
-        Log.error("[#{__MODULE__}] Fail to sumbit veriffme session. Error: #{inspect(err)}")
-        {:error, {:internal_error, "Fail to close session"}}
+      err -> {:error, {:internal_error, "Fail to close session"}}
     end
   end
 

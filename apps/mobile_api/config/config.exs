@@ -11,7 +11,7 @@ config :mobile_api, MobileApi.Endpoint,
   ],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [view: AttestationApi.ErrorView, accepts: ~w(json)],
-  http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]],
+  # http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]],
   server: true,
   watchers: []
 

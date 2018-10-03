@@ -17,3 +17,4 @@ defmodule AttestationApi.Repo.Migrations.CreateDigitalVerificationsTable do
     end
   end
 end
+ 

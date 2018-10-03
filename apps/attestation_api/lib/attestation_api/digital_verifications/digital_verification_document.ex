@@ -1,25 +1,24 @@
 defmodule AttestationApi.DigitalVerifications.DigitalVerificationDocument do
-  @moduledoc """
-  DigitalVerificationDocument entity
-  Stores DigitalVerification documents
-  """
+  @moduledoc false
 
   use Ecto.Schema
+
   import Ecto.Changeset
 
-  @fields ~w(verification_id context content timestamp)
+  ##### Schema #####
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "digital_verification_documents" do
-    field(:verification_id, Ecto.UUID)
-    field(:context, :string)
-    field(:content, :string)
-    field(:timestamp, :integer)
+    field :verification_id, Ecto.UUID
+    field :context, :string
+    field :content, :string
+    field :timestamp, :integer
   end
 
-  @doc """
-  Makes entity changeset
-  """
+  @fields ~w(verification_id context content timestamp)a
+
+  ##### Public #####
+
   @spec changeset(map) :: Ecto.Changeset.t()
   def changeset(params) when is_map(params), do: changeset(%__MODULE__{}, params)
 
