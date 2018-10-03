@@ -4,7 +4,7 @@ defmodule AttestationApi.Router do
   use AttestationApi, :router
   use Plug.ErrorHandler
 
-  alias AttestationApi.Plugs.AccountAddress
+  # alias AttestationApi.Plugs.AccountAddress
   alias Plug.LoggerJSON
 
   require Logger
@@ -15,7 +15,7 @@ defmodule AttestationApi.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
-    plug(AccountAddress)
+    # plug(AccountAddress)
   end
 
   pipeline :eview_response do
