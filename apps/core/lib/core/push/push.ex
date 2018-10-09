@@ -15,10 +15,6 @@ defmodule Core.Push do
   """
   @spec enqueue(binary, binary, binary) :: :ok
   def enqueue(message, device_os, device_token) when device_os in @available_device_os do
-    IO.inspect "MESSAGE: #{inspect message}"
-    IO.inspect "DEVICE: #{inspect device_os}"
-    IO.inspect "TOKEN: #{inspect device_token}"
-    
     message
     |> @push_sender.send(device_os, device_token)
     |> case do

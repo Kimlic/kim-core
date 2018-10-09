@@ -93,7 +93,7 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
     end)
     |> case do
       :ok -> :ok
-      err -> {:error, {:internal_error, "Fail to upload media on verification"}}
+      _ -> {:error, {:internal_error, "Fail to upload media on verification"}}
     end
   end
 
@@ -103,7 +103,7 @@ defmodule AttestationApi.DigitalVerifications.Operations.UploadMedia do
     {:ok, %{"status" => "success", "verification" => %{"status" => "submitted"}}} <- Jason.decode(body) do
       :ok
     else
-      err -> {:error, {:internal_error, "Fail to close session"}}
+      _ -> {:error, {:internal_error, "Fail to close session"}}
     end
   end
 

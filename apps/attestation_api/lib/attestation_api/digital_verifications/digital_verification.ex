@@ -17,7 +17,6 @@ defmodule AttestationApi.DigitalVerifications.DigitalVerification do
     veriffme_code
     veriffme_status
     veriffme_reason
-    veriffme_comments
     veriffme_document
     veriffme_person
   )a
@@ -50,7 +49,6 @@ defmodule AttestationApi.DigitalVerifications.DigitalVerification do
     field(:veriffme_code, :integer)
     field(:veriffme_status, :string)
     field(:veriffme_reason, :string)
-    field(:veriffme_comments, {:array, :map})
     field(:veriffme_document, :map)
     field(:veriffme_person, :map)
     timestamps()

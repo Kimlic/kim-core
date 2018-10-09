@@ -176,7 +176,6 @@ defmodule AttestationApi.DigitalVerifications do
       veriffme_code: verification_result["code"],
       veriffme_status: verification_result["status"],
       veriffme_reason: verification_result["reason"],
-      veriffme_comments: verification_result["comments"],
       veriffme_document: verification_result["document"],
       veriffme_person: verification_result["person"]
     }
