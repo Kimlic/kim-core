@@ -43,7 +43,7 @@ defmodule AttestationApi.Router do
     post("/verifications/digital/submission", DigitalVerificationController, :verification_submission_webhook)
     post("/verifications/digital/decision", DigitalVerificationController, :verification_result_webhook)
 
-    get "/verifications/:session_tag", DigitalVerificationController, :verification_info
+    get "/verifications/:session_id", DigitalVerificationController, :verification_info
   end
 
   @spec handle_errors(Plug.Conn.t(), map) :: Plug.Conn.t()

@@ -66,8 +66,8 @@ defmodule AttestationApi.DigitalVerificationController do
     json(conn, VendorDocuments.all())
   end
 
-  def verification_info(conn, %{"session_tag" => session_tag}) do
-    with {:ok, verifications} <- DigitalVerifications.verification_info(session_tag) do
+  def verification_info(conn, %{"session_id" => session_id}) do
+    with {:ok, verifications} <- DigitalVerifications.verification_info(session_id) do
       res = %{
         person: verifications.veriffme_person,
         document: verifications.veriffme_document,

@@ -38,10 +38,10 @@ defmodule AttestationApi.DigitalVerifications do
     end
   end
 
-  def verification_info(session_tag) do
+  def verification_info(session_id) do
     res = Repo.one from dv in DigitalVerification,
-      where: dv.session_id == ^session_tag,
-      select: [:veriffme_document, :veriffme_person],
+      where: dv.session_id == ^session_id,
+      select: [:veriffme_document, :veriffme_person, :veriffme_status, :veriffme_reason],
       limit: 1
     
     case res do
