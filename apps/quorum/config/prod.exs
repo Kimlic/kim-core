@@ -15,4 +15,4 @@ config :task_bunny,
     default: [connect_options: "amqp://kimlic:v2re3X7tMP@168.62.189.14:5672?heartbeat=30"]
   ]
 
-config :ethereumex, url: "http://23.96.119.190:22000" # System.get_env("QUORUM_URI")
+config :ethereumex, url: "http://40.121.145.171:22000" # System.get_env("QUORUM_URI")

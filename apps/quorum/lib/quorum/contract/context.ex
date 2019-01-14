@@ -19,7 +19,9 @@ defmodule Quorum.Contract.Context do
   @spec get_context_address :: binary
   def get_context_address do
     context_storage_address = Application.get_env(:quorum, :context_storage_address)
+    IO.puts "context_storage_address: #{inspect context_storage_address}"
     {:ok, address} = KimlicContextStorage.get_context(%{to: context_storage_address})
+    IO.puts "address: #{inspect address}"
 
     address64_to_40(address)
   end

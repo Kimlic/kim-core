@@ -14,4 +14,4 @@ config :task_bunny,
     default: [connect_options: "amqp://kimlic:kimlic@localhost:5672?heartbeat=30"]
   ]
 
-config :ethereumex, url: "http://23.96.119.190:22000"
+config :ethereumex, url: "http://40.121.145.171:22000"
